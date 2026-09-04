@@ -1,0 +1,31 @@
+theme_id,theme_name,display_label,original_term,database
+1,Coagulation & complement,Complement & coagulation cascades,Complement And Coagulation Cascades WP558,WikiPathways_2024_Human
+1,Coagulation & complement,Hemolytic–uremic syndrome,HEMOLYTIC-UREMIC SYNDROME,Jensen_DISEASES_Curated_2025
+1,Coagulation & complement,Regulation of complement cascade,Regulation of Complement Cascade,Reactome_Pathways_2024
+2,Lipoprotein,Lipoprotein lipase activity,Lipoprotein Lipase Activity (GO:0004465),GO_Molecular_Function_2025
+2,Lipoprotein,Scavenger-receptor ligand uptake,Binding and Uptake of Ligands by Scavenger Receptors,Reactome_Pathways_2024
+2,Lipoprotein,HDL levels,Hdl Levels,GWAS_Catalog_2025
+3,Pancreatic exocrine,Pancreatic secretion,PANCREATIC SECRETION,KEGG_2026
+3,Pancreatic exocrine,Pancreatic acinar cell,Acinar Cell Pancreatic Islet Human,CellMarker_2024
+4,Enteroendocrine,Enteroendocrine cell,Enteroendocrine Cell Intestinal Crypt Mouse,CellMarker_2024
+4,Enteroendocrine,Intestinal enterocyte,Enterocyte Intestinal Crypt Mouse,CellMarker_2024
+5,GH–IGF axis,IGF binding,Insulin-Like Growth Factor Binding (GO:0005520),GO_Molecular_Function_2025
+5,GH–IGF axis,IGFBP-mediated IGF transport,Regulation of IGF Transport and Uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs),Reactome_Pathways_2024
+6,Neuroendocrine,Hormone activity,Hormone Activity (GO:0005179),GO_Molecular_Function_2025
+6,Neuroendocrine,Peptide hormone metabolism,Peptide Hormone Metabolism,Reactome_Pathways_2024
+6,Neuroendocrine,Leptin & adiponectin,Leptin And Adiponectin WP3934,WikiPathways_2024_Human
+6,Neuroendocrine,Ghrelin synthesis & secretion,"Synthesis, Secretion, and Deacylation of Ghrelin",Reactome_Pathways_2024
+7,Skeletal muscle,Muscle cytoskeleton,CYTOSKELETON IN MUSCLE CELLS,KEGG_2026
+7,Skeletal muscle,Hypertrophic cardiomyopathy,HYPERTROPHIC CARDIOMYOPATHY,KEGG_2026
+8,Extracellular matrix,Collagen-containing ECM,Collagen-Containing Extracellular Matrix (GO:0062023),GO_Cellular_Component_2025
+8,Extracellular matrix,ECM-receptor interaction,ECM-RECEPTOR INTERACTION,KEGG_2026
+8,Extracellular matrix,TGF-β family signaling,Signaling by TGFB Family Members,Reactome_Pathways_2024
+9,Vascular,FGF binding,Fibroblast Growth Factor Binding (GO:0017134),GO_Molecular_Function_2025
+9,Vascular,Sprouting angiogenesis,Sprouting Angiogenesis (GO:0002040),GO_Biological_Process_2025
+9,Vascular,Chemotaxis induction,Positive Regulation of Positive Chemotaxis (GO:0050927),GO_Biological_Process_2025
+10,Neuronal,Axon guidance,Axon Guidance,Reactome_Pathways_2024
+10,Neuronal,L1CAM interactions,L1CAM Interactions,Reactome_Pathways_2024
+10,Neuronal,Synapse assembly,Positive Regulation of Synapse Assembly (GO:0051965),GO_Biological_Process_2025
+11,Inflammation,Chemokine binding,Chemokine Binding (GO:0019956),GO_Molecular_Function_2025
+11,Inflammation,Immune system disease,IMMUNE SYSTEM DISEASE,Jensen_DISEASES_Curated_2025
+11,Inflammation,Cytokine–cytokine receptor interaction,CYTOKINE-CYTOKINE RECEPTOR INTERACTION,KEGG_2026

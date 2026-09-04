@@ -1,0 +1,46 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.pixi/
+
+# Machine-specific data mount config (copy from paths.example.yaml)
+paths.yaml
+
+# Data files (clinical trial data, do not commit)
+*.parquet
+*.csv
+*.tsv
+*.xlsx
+# Allow hand-curated figure config CSVs (not data)
+!figures/configs/*.csv
+data/surmount5_olink/
+data/surmount5_soma/
+data/pheno_data/
+data/comparator_studies/
+aging_data/
+
+# QC reports
+*.html
+
+# Analysis cache/outputs
+analysis/cache/
+analysis/outputs/*
+!analysis/outputs/.gitkeep
+analysis/derived/
+
+# Results data (regenerable)
+results/
+
+# Hormone Cell Atlas h5ads, large (~1 GB), regenerable via curl from
+# https://cellgeni.cog.sanger.ac.uk/hormonecellatlas/download/
+data/external/hormone_atlas/
+
+# Rendered PDFs (regenerable from .py scripts)
+*.pdf

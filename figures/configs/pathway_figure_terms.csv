@@ -1,0 +1,33 @@
+theme_id,theme_name,display_label,original_term,database,lead_genes_in_figure
+1,Coagulation & complement,Complement cascade,Complement Cascade,Reactome_Pathways_2024,C3;CFB;CFH;CFI;C5;C4B;CPB2;CFP
+1,Coagulation & complement,Fibrin clot formation,Formation of Fibrin Clot (Clotting Cascade),Reactome_Pathways_2024,F2;F7;F9;F10;KLKB1;TF;SERPIND1
+1,Coagulation & complement,Acute inflammatory response,Acute Inflammatory Response (GO:0002526),GO_Biological_Process_2025,APCS;INS;VNN1
+2,Lipoprotein,Lipoprotein particle clearance,Positive Regulation of Lipoprotein Particle Clearance (GO:0010986),GO_Biological_Process_2025,GPIHBP1;LDLRAP1;LIPG
+3,Steroid hormones,Glucocorticoid biosynthesis,Glucocorticoid Biosynthesis WP5280,WikiPathways_2024_Human,HSD11B1;CYP3A4;AKR1C4
+3,Steroid hormones,SHBG levels,Sex Hormone-Binding Globulin Levels,GWAS_Catalog_2025,SHBG;ATP1B2;FTO;GCKR
+4,Iron homeostasis,Iron transmembrane transport,Iron Ion Transmembrane Transport (GO:0034755),GO_Biological_Process_2025,SCARA5;SLC39A14;SLC40A1
+4,Iron homeostasis,Cellular response to iron,Cellular Response to Iron Ion (GO:0071281),GO_Biological_Process_2025,TF;BMP6;TFAP2A
+5,Pancreatic exocrine,Pancreatic secretion,PANCREATIC SECRETION,KEGG_2026,CTRB1;CTRB2;PRSS2;PNLIP;CPA1;PLA2G1B;PNLIPRP1;PRSS3
+5,Pancreatic exocrine,Carboxypeptidase activity,Carboxypeptidase Activity (GO:0004180),GO_Molecular_Function_2025,CPA1;CPB1;CPB2;CPM;CTSZ;NAALAD2
+6,Enteroendocrine,Pancreatic endocrine cells,Endocrine Cell Pancreas Human,CellMarker_2024,PPY;CHGB;ISL1;LRP11
+6,Enteroendocrine,Intestinal enteroendocrine,Enteroendocrine Cell Intestine Mouse,CellMarker_2024,CHGA;CHGB;SOX4
+7,GH–IGF axis,Response to GH,Cellular Response to Growth Hormone Stimulus (GO:0071378),GO_Biological_Process_2025,GH1;GH2;GHR;CSH1;IGF1
+7,GH–IGF axis,IGF-1 binding,Insulin-Like Growth Factor I Binding (GO:0031994),GO_Molecular_Function_2025,IGFBP1;IGFBP2;ITGAV;ITGB3
+7,GH–IGF axis,Response to glucose,Cellular Response to Glucose Stimulus (GO:0071333),GO_Biological_Process_2025,IGF1R;PTPRN;PTPRN2
+8,Neuroendocrine,Ghrelin biosynthesis,"Synthesis, Secretion, and Deacylation of Ghrelin",Reactome_Pathways_2024,GHRL;GH1;LEP;INS;IGF1
+8,Neuroendocrine,Appetite suppression,Negative Regulation of Appetite (GO:0032099),GO_Biological_Process_2025,GDF15;GFRAL;LEP;NENF
+8,Neuroendocrine,Neuropeptide signaling,Neuropeptide Signaling Pathway (GO:0007218),GO_Biological_Process_2025,CPE;NPPB;NXPH3;PPY
+8,Neuroendocrine,Dense core granule,Dense Core Granule (GO:0031045),GO_Cellular_Component_2025,CHGA;NPY;KIF1A;SYT1
+9,Skeletal muscle,Myogenesis,Myogenesis,Reactome_Pathways_2024,MYF5;BOC;CDON;NEO1;ABL1
+9,Skeletal muscle,Wnt and Myostatin antagonists,Receptor Antagonist Activity (GO:0048019),GO_Molecular_Function_2025,DKK1;DKK3;FST;WFIKKN2;DKK4
+10,Extracellular matrix,TGF-β binding,Transforming Growth Factor Beta Binding (GO:0050431),GO_Molecular_Function_2025,TGFBR3;LTBP4;ACVRL1;WFIKKN2;VASN;ITGAV
+10,Extracellular matrix,Dermatan sulfate biosynthesis,Dermatan Sulfate Biosynthesis,Reactome_Pathways_2024,BCAN;NCAN;UST;VCAN
+10,Extracellular matrix,ECM disassembly,Extracellular Matrix Disassembly (GO:0022617),GO_Biological_Process_2025,ADAM15;KLK4;SH3PXD2B
+11,Vascular,VEGF receptor signaling,Vascular Endothelial Growth Factor Receptor Signaling Pathway (GO:0048010),GO_Biological_Process_2025,FLT4;NRP1;VEGFD;CLEC14A
+11,Vascular,Chemotaxis induction,Induction of Positive Chemotaxis (GO:0050930),GO_Biological_Process_2025,VEGFB;VEGFC;VEGFD;CXCL8;SCG2;CXCL12
+11,Vascular,Sprouting angiogenesis,Sprouting Angiogenesis (GO:0002040),GO_Biological_Process_2025,EFNB2;ESM1;NRP1;VEGFD;ROBO1;CDH13
+12,Neuronal,Synapse assembly,Positive Regulation of Synapse Assembly (GO:0051965),GO_Biological_Process_2025,SLITRK1;SLITRK4;NLGN1;PTPRD;SLITRK2;CLSTN2;SLITRK3
+12,Neuronal,Semaphorin–Plexin signaling,Semaphorin-Plexin Signaling Pathway (GO:0071526),GO_Biological_Process_2025,PLXNA1;NRP1;SEMA5A;SEMA3G;PLXNA4
+13,Inflammation,Lymphocyte homing,Lymphocyte Migration Into Lymphoid Organs (GO:0097021),GO_Biological_Process_2025,RET;CRTAM;NEDD9;FUT4;FUT7
+13,Inflammation,Leukotriene–IL-4 axis,LTC4-CYSLTR Mediated IL4 Production,Reactome_Pathways_2024,DPEP1;GGT5
+13,Inflammation,Mast cell activation,Mast Cell Activation Involved in Immune Response (GO:0002279),GO_Biological_Process_2025,KIT;NR4A3;S100A13

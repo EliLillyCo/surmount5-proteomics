@@ -1,0 +1,72 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated publication."
+title: "SURMOUNT-5 Proteomics Analysis Code"
+type: software
+license: MIT
+repository-code: "https://github.com/EliLillyCo/surmount5-proteomics"
+authors:
+  - family-names: Chiou
+    given-names: Joshua
+    email: joshua.chiou@lilly.com
+    affiliation: "Eli Lilly and Company"
+  - family-names: Dunn
+    given-names: Julia P.
+    affiliation: "Eli Lilly and Company"
+  - family-names: Dimitriadis
+    given-names: Georgios K.
+    affiliation: "Eli Lilly and Company"
+  - family-names: Falcon
+    given-names: Beverly
+    affiliation: "Eli Lilly and Company"
+  - family-names: Yan
+    given-names: Dongyan
+    affiliation: "Eli Lilly and Company"
+  - family-names: "O'Dushlaine"
+    given-names: Colm
+    affiliation: "Eli Lilly and Company"
+  - family-names: Coghlan
+    given-names: Matthew
+    affiliation: "Eli Lilly and Company"
+  - family-names: Harris
+    given-names: Charles
+    affiliation: "Eli Lilly and Company"
+  - family-names: Titchenell
+    given-names: Paul
+    affiliation: "Eli Lilly and Company"
+preferred-citation:
+  type: article
+  title: "Differential Plasma Proteomic Responses between Tirzepatide and Semaglutide in Adults with Obesity: An Exploratory Analysis of SURMOUNT-5"
+  authors:
+    - family-names: Chiou
+      given-names: Joshua
+    - family-names: Dunn
+      given-names: Julia P.
+    - family-names: Dimitriadis
+      given-names: Georgios K.
+    - family-names: Falcon
+      given-names: Beverly
+    - family-names: Yan
+      given-names: Dongyan
+    - family-names: "O'Dushlaine"
+      given-names: Colm
+    - family-names: Coghlan
+      given-names: Matthew
+    - family-names: Harris
+      given-names: Charles
+    - family-names: Titchenell
+      given-names: Paul
+  journal: "TODO"
+  year: 2026
+  doi: "TODO"
+references:
+  - type: article
+    title: "Tirzepatide versus Semaglutide for the Treatment of Obesity"
+    authors:
+      - family-names: Aronne
+        given-names: Louis J.
+    journal: "New England Journal of Medicine"
+    year: 2025
+    volume: "393"
+    start: 26
+    end: 36
+    doi: "10.1056/NEJMoa2410872"

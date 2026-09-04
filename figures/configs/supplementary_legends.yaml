@@ -1,0 +1,188 @@
+figures:
+  - key: supp_fig1_study_design
+    number: 1
+    title: Study design and quality control for dual-platform proteomics.
+    legend: >-
+      CONSORT-style overview of the SURMOUNT-5 proteomics sub-study. Of 751
+      randomized participants, 641 were profiled on Olink Explore HT (5,416
+      antibody-based assays) and SomaScan 11K (10,771 aptamer-based assays) at
+      weeks 0, 24 and 72. Technical QC removed samples for assay-level quality
+      failures (Olink: missing values, PCA outlier, median/IQR outlier; SomaScan:
+      RFU/row-check outlier, PCA outlier, median/IQR outlier) or sex/age mismatch,
+      while longitudinal QC removed samples from participants who discontinued
+      treatment, lacked a baseline draw, or had only a baseline draw. Each excluded
+      sample is counted once, attributed to the first failing criterion in a fixed
+      priority order, so the per-reason counts shown sum to the net total removed
+      at each step. After QC, 1,688 samples from 598 participants remained on
+      Olink and 1,651 samples from 591 participants on SomaScan. Six downstream
+      analysis streams are indicated at bottom with corresponding main-text figure
+      references. Color denotes platform (green, Olink; dark red, SomaScan) and
+      treatment arm (red, TZP 15 mg; blue, SEMA 2.4 mg); salmon boxes indicate QC
+      exclusions.
+  - key: supp_fig2_concordance
+    number: 2
+    title: Cross-platform concordance of Olink and SomaScan baseline measurements.
+    legend: >-
+      Distribution of Spearman correlation coefficients (ρ) between Olink
+      Explore HT (NPX) and SomaScan 11K (log₂ RFU) across 4,510 matched assay
+      pairs in 585 subjects at baseline. A two-component Gaussian mixture model
+      separates concordant (red; n = 1,425, μ₁ = 0.646) from discordant (gray; n
+      = 3,085, μ₀ = 0.078) assay pairs, with an estimated threshold τ = 0.348.
+  - key: supp_fig3_biomarker_correlation
+    number: 3
+    title: Correlation of proteomic assay values with clinical biomarker measurements.
+    legend: >-
+      a, b, Scatter plots of proteomic assay values versus matched clinical
+      laboratory measurements at baseline on Olink (a) and SomaScan (b). Each
+      subplot shows a single protein-biomarker pair with assay identifier
+      annotated at top. The x-axis shows proteomics values (NPX for Olink; log2
+      RFU for SomaScan) and the y-axis shows clinical values on a log scale.
+      Spearman ρ and n are shown per panel. Diagonal line, identity reference.
+      Point colors distinguish analytes.
+  - key: supp_fig4_trajectory_lines
+    number: 4
+    title: Additional temporal profiles of within-arm proteomic response.
+    legend: >-
+      a, b, Within-arm mean percent change from baseline at weeks 0, 24 and 72
+      for selected analytes illustrating platform coverage and trajectory
+      diversity, on Olink (a; HSD11B1, LPL, DMP1, GUCA2A) and SomaScan
+      (b; CRP, FABP3, HAMP, APOC3). Asterisked proteins are measured on a
+      single platform only; "Not covered by <platform>" is noted within the
+      panel. Color denotes arm (red, TZP; blue, SEMA). Error bars, 95% CI.
+      Percent change values are labeled at weeks 24 and 72. The colored banner
+      above each plot indicates the tirzepatide trajectory class.
+  - key: supp_fig5_tzp_induced
+    number: 5
+    title: Temporal profiles of TZP-induced proteins.
+    legend: >-
+      a, b, Within-arm mean percent change from baseline at weeks 0, 24 and 72
+      for proteins increased by both treatments with a greater effect under TZP,
+      on Olink (a) and SomaScan (b). Color denotes arm (red, TZP; blue, SEMA).
+      Error bars, 95% CI. Percent change values are labeled at weeks 24 and 72.
+      The colored banner above each plot indicates the tirzepatide trajectory
+      class. Across-treatment FDR significance: *P < 0.05, **P < 0.01, ***P <
+      0.001.
+  - key: supp_fig6_tzp_suppressed
+    number: 6
+    title: Temporal profiles of TZP-suppressed proteins.
+    legend: >-
+      a, b, Within-arm mean percent change from baseline at weeks 0, 24 and 72
+      for proteins decreased by both treatments with a greater reduction under
+      TZP, on Olink (a) and SomaScan (b). Conventions as in Supplementary Fig. 5.
+  - key: supp_fig7_exocrine_pancreas
+    number: 7
+    title: Temporal profiles of exocrine pancreatic proteins.
+    legend: >-
+      a, b, Within-arm mean percent change from baseline at weeks 0, 24 and 72
+      for exocrine pancreatic proteins on Olink (a) and SomaScan (b). Conventions
+      as in Supplementary Fig. 5.
+  - key: supp_fig8_tzp_opposing
+    number: 8
+    title: Temporal profile of proteins with opposing within-arm responses to TZP and SEMA.
+    legend: >-
+      Within-arm mean percent change from baseline at weeks 0, 24 and 72 for
+      three Olink proteins that change in opposite directions between the two
+      arms: TZP increases while SEMA decreases. Conventions as in Supplementary
+      Fig. 5.
+  - key: supp_fig9_cross_study
+    number: 9
+    title: Cross-study comparison of SURMOUNT-5 across-treatment effects with STEP 1 and STEP 2 semaglutide effects.
+    legend: >-
+      a, b, Scatter plots comparing SURMOUNT-5 across-treatment z-scores (TZP vs.
+      SEMA; x-axis) with SEMA versus placebo z-scores from STEP 1 (a) and STEP 2
+      (b) on SomaScan, adjusted for age, sex, and baseline protein level. Left
+      and right panels show week 24 and week 72, respectively. Red and blue
+      denote analytes significant in SURMOUNT-5 with higher levels in TZP and
+      SEMA, respectively (FDR < 0.05); gray, not significant. Spearman ρ and P
+      values are annotated per panel. Selected analytes are labeled.
+  - key: supp_fig10_cross_study_pcbl
+    number: 10
+    title: Cross-study comparison of SURMOUNT-5 semaglutide within-arm change from baseline with STEP 1 and STEP 2 semaglutide effects.
+    legend: >-
+      a, b, Scatter plots comparing SURMOUNT-5 semaglutide within-arm
+      change-from-baseline z-scores at week 72 (x-axis) with SEMA versus placebo
+      z-scores from STEP 1 (a) and STEP 2 (b) on SomaScan, adjusted for age, sex,
+      and baseline protein level. Red and blue denote analytes significantly
+      increased or decreased, respectively, in the SURMOUNT-5 semaglutide arm
+      (FDR < 0.05); gray, not significant. Spearman ρ and P values are
+      annotated. Selected analytes are labeled.
+  - key: supp_fig11_pathway_ora
+    number: 11
+    title: Over-representation analysis of across-treatment pathway enrichment.
+    legend: >-
+      Over-representation analysis (ORA) of across-treatment differentially
+      expressed proteins on Olink (left) and SomaScan (right), grouped by
+      biological theme. For each pathway, filled and open circles indicate week 72
+      and week 24 significance, respectively; small gray dots, not significant
+      (FDR ≥ 0.05). Circle area scales with pathway overlap (proportion of
+      pathway members measured; reference sizes: 5%, 20%, 50%). Curated lead
+      genes are listed at right, colored by direction (red, ↑TZP; blue, ↑SEMA;
+      black, mixed). The dashed vertical line marks FDR = 0.05.
+  - key: supp_fig12_mediation_week24
+    number: 12
+    title: Decomposition of the tirzepatide versus semaglutide proteomic effect at week 24 into weight-mediated and weight-independent components.
+    legend: >-
+      a, b, Total vs direct effect at week 24 on Olink (a) and SomaScan (b).
+      Plotting conventions as in Fig. 4a, b.
+  - key: supp_fig13_mediation_weight_mediated
+    number: 13
+    title: Weight-mediated themes in the tirzepatide versus semaglutide mediation analysis.
+    legend: >-
+      a–e, Week-72 weight-mediation forest plots on Olink (left) and SomaScan
+      (right) for five themes classified as predominantly weight-mediated (a,
+      Coagulation & complement; b, Hepatic acute-phase; c, Steroid hormone
+      metabolism; d, GH–IGF axis; e, Apolipoproteins & lipid handling). Plotting
+      conventions as in Fig. 4c–f: for each protein, the total effect (filled
+      circle) and ADE (open circle) are shown with 95% bootstrap CIs, colored by
+      direction (red, ↑TZP; blue, ↑SEMA). Open circles outlined in gray
+      indicate ADE FDR ≥ 0.05. Gray connectors indicate significant weight
+      mediation (ACME FDR < 0.05). The proportion mediated (PM) is annotated to
+      the right of each row. Italic labels denote proteins measured on only one
+      platform.
+  - key: supp_fig14_mediation_heterogeneous
+    number: 14
+    title: Heterogeneous-mediation themes in the tirzepatide versus semaglutide mediation analysis.
+    legend: >-
+      a–f, Week-72 weight-mediation forest plots on Olink (left) and SomaScan
+      (right) for six themes with mixed weight-mediated and weight-independent
+      components (a, Vascular; b, ECM & TGFβ remodeling; c, Neural; d, Iron
+      homeostasis; e, Mast cell signaling; f, Pancreatic exocrine). Plotting
+      conventions as in Fig. 4c–f: for each protein, the total effect (filled
+      circle) and ADE (open circle) are shown with 95% bootstrap CIs, colored by
+      direction (red, ↑TZP; blue, ↑SEMA). Open circles outlined in gray
+      indicate ADE FDR ≥ 0.05. Gray connectors indicate significant weight
+      mediation (ACME FDR < 0.05). The proportion mediated (PM) is annotated to
+      the right of each row. Italic labels denote proteins measured on only one
+      platform.
+  - key: supp_fig15_gipr_glp1r_celltype
+    number: 15
+    title: GIPR and GLP1R expression across pancreatic cell types in the Human Hormone Cell Atlas.
+    legend: >-
+      Dot plot of incretin-receptor expression across ten broad pancreatic cell
+      types from the Human Hormone Cell Atlas (Fei, Huang-Doran et al., Science
+      2026; Pancreas_annotated.h5ad, n = 122,020 normal pancreas cells,
+      celltype_level1 annotations). Dot size, fraction of cells with non-zero
+      counts (% expressing); dot color, per-cell-type mean of log1p-normalized
+      expression (per-cell UMI counts scaled to a constant total then
+      natural-log-transformed as log(1 + x)). Per-gene colormaps with
+      independent normalizations (Reds, GIPR; Blues, GLP1R). Per-dot
+      percentages annotated to the right; values below 1% summarized as "<1%"
+      in gray. Gold band highlights pancreatic γ (PP) cells.
+  - key: supp_fig16_reg4
+    number: 16
+    title: REG4 as a candidate GIP receptor-associated marker.
+    legend: >-
+      a, Within-arm mean percent change from baseline (95% CI) in REG4 at weeks
+      0, 24 and 72 in SURMOUNT-5 on Olink and SomaScan. Color denotes arm (red,
+      TZP; blue, SEMA). The colored banner above each plot indicates the
+      tirzepatide trajectory class. b, SomaScan log₂ fold change (95% CI) of SEMA
+      versus placebo on REG4 at the single post-baseline timepoint in STEP 1 and
+      STEP 2. For each trial, the primary model (filled circle) and a model
+      additionally adjusted for percent change in weight and HbA₁c (open circle)
+      are shown. Gray, adjusted P ≥ 0.05. c, Change from baseline in REG4 by
+      GIPR rs1800437 (E354Q) genotype × arm at weeks 24 and 72 on Olink (left
+      pair) and SomaScan (right pair), residuals adjusted for age, sex, genetic
+      principal components 1–3, and baseline protein level, pooled across arms
+      within each platform and visit. Box, median ± IQR; points, individual
+      subjects. n per genotype listed below each column. P values (TZP vs. SEMA,
+      per-platform MMRM; see Methods) shown in bold when P < 0.05; ns, P ≥ 0.05.

@@ -1,0 +1,42 @@
+[project]
+name = "surmount5-proteomics"
+version = "0.1.0"
+description = "Dual-platform (Olink + SomaScan) proteomic analysis of tirzepatide vs semaglutide effects on the obesity proteome (SURMOUNT-5)."
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "adjusttext>=1.3.0",
+    "fastexcel>=0.20.2",
+    "gseapy==1.3.1",
+    "joblib==1.6.0",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.3",
+    "plotly>=6.7.0",
+    "polars[rtcompat]>=1.40.1",
+    "pyarrow>=24.0.0",
+    "pycomplexheatmap>=1.8.5",
+    "pypdf>=6.15.0",
+    "pysam>=0.24.0",
+    "pyyaml>=6.0.3",
+    "requests>=2.33.1",
+    "scikit-learn==1.9.0",
+    "scipy>=1.17.1",
+    "somadata==1.2.6",
+    "statsmodels>=0.14.6",
+    "tqdm>=4.67.1",
+    "ultraplot>=2.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]
+
+[tool.black]
+extend-exclude = '/\.claude/'
+
+# Pin the resolution index to public PyPI so locally-configured private
+# mirrors can never leak into uv.lock of this public repository.
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true

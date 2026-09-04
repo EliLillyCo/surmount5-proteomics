@@ -1,0 +1,282 @@
+# Manuscript reproduction manifest.
+#
+# This file intentionally lists only manuscript-relevant code paths. Protected
+# clinical trial data and large derived result directories are resolved through
+# paths.yaml / paths.example.yaml rather than hardcoded here.
+
+version: 1
+study: SURMOUNT-5
+covariate_model: covar_AGE_SEX
+
+inputs:
+  path_config:
+    file: paths.yaml
+    example: paths.example.yaml
+    note: Local DNAnexus mount roots; do not commit sensitive mount-specific replacements.
+  compatibility:
+  protected_data:
+    - data/surmount5_olink/
+    - data/surmount5_soma/
+    - data/pheno_data/
+  mounted_result_roots:
+    mmrm_root: paths.yaml:mmrm_root
+    qc_root: paths.yaml:qc_root
+    pheno_root: paths.yaml:pheno_root
+    geno_root: paths.yaml:geno_root
+    qa_root: paths.yaml:qa_root
+    raw_proteomics_root: paths.yaml:raw_proteomics_root
+
+analysis_outputs:
+  qc:
+    command: uv run python analysis/pipelines/run_qc.py
+    inputs:
+      - paths.yaml:raw_proteomics_root
+      - paths.yaml:pheno_root
+      - mounted project-root bridge manifest: reference_data/olink_bridge_samples/plasma.manifest.csv
+    outputs:
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.npx_long.parquet
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.sample_qc_summary.tsv
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.assay_qc_summary.tsv
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.rfu_long.parquet
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.sample_qc_summary.tsv
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.assay_qc_summary.tsv
+    downstream:
+      - analysis/pipelines/run_mmrm.py
+      - analysis/pipelines/run_mediation.py
+      - tables/suppl_assay_qc.py
+      - tables/suppl_biomarker_correlation.py
+  uniprot_map:
+    command: uv run python analysis/scripts/build_uniprot_map.py
+    outputs:
+      - analysis/outputs/uniprot_map.parquet
+      - analysis/outputs/uniprot_map_wide.parquet
+      - analysis/outputs/uniprot_map_long.parquet
+    downstream:
+      - figures
+      - tables
+  platform_concordance:
+    command: uv run python analysis/scripts/platform_concordance.py
+    outputs:
+      - analysis/outputs/platform_concordance.parquet
+    downstream:
+      - figures/supp_fig2_concordance.py
+      - tables/suppl_concordance.py
+  trajectory_classification:
+    command: uv run python analysis/scripts/trajectory_classification.py
+    inputs:
+      - results/surmount5_olink/covar_AGE_SEX/finalRes/pcblRes/
+      - results/surmount5_soma/covar_AGE_SEX/finalRes/pcblRes/
+    outputs:
+      - analysis/outputs/trajectory_olink.parquet
+      - analysis/outputs/trajectory_soma.parquet
+    downstream:
+      - figures/fig1_trajectory.py
+      - figures/supp_fig4_trajectory_lines.py
+      - figures/supp_fig5_tzp_induced.py
+      - figures/supp_fig6_tzp_suppressed.py
+      - figures/supp_fig8_tzp_opposing.py
+      - tables/suppl_trajectory.py
+  maretty_step_data:
+    command: uv run python analysis/scripts/maretty_step_data.py
+    outputs:
+      - analysis/outputs/maretty_step_data.parquet
+    downstream:
+      - figures/supp_fig9_cross_study.py
+      - figures/supp_fig10_cross_study_pcbl.py
+      - figures/fig5_ppy.py
+      - figures/supp_fig16_reg4.py
+  qc_reference_tables:
+    command: uv run python analysis/scripts/qc_reference_tables.py
+    outputs:
+      - analysis/qc/data/41467_2025_59034_MOESM3_ESM.Table_S2.tsv
+      - analysis/qc/data/41591_2024_3164_MOESM3_ESM.Table_S1.tsv
+    downstream:
+      - analysis/pipelines/run_qc.py
+  wgs_pcs:
+    command: uv run python analysis/pipelines/run_wgs_pcs.py
+    outputs:
+      - paths.yaml:qa_root/2000_genomic_data_processing/2200_analysis_data/pruned_genome/2203_*_pruned_genome.{bed,bim,fam}
+      - paths.yaml:qa_root/3000_genomic_data_summary/3100_pca/3101_*_pruned_genome_pc.csv
+    downstream:
+      - analysis/pharmacogenomics/run.py
+  pharmacogenomics:
+    command: uv run python analysis/pharmacogenomics/run.py
+    outputs:
+      - analysis/outputs/genotype_E354Q_frame.parquet
+      - analysis/outputs/genotype_E354Q_contrasts.parquet
+    downstream:
+      - figures/fig5_ppy.py
+      - figures/supp_fig16_reg4.py
+
+modules:
+  environment:
+    pixi_file: pixi.toml
+    python_runtime: 3.13.13
+    r_runtime: 4.5.3
+    python_lock: uv.lock
+    pixi_tasks:
+      - pixi run manifest-list
+      - pixi run manifest-check
+      - pixi run audit-figures
+      - pixi run validate
+    r_tasks:
+      - pixi run check-r
+    pinned_r_packages:
+      mmrm: 0.3.17
+      emmeans: 2.0.3
+      mediation: 4.5.1
+      limma: 3.66.0
+  qc:
+    package: analysis/qc/
+    modules:
+      - core.py
+      - quality_control.py
+      - detection.py
+      - outliers.py
+      - sex_concordance.py
+      - age_concordance.py
+      - biomarkers.py
+      - clinical.py
+      - utils.py
+    entrypoint: uv run python analysis/pipelines/run_qc.py
+    platform_files:
+      olink_long: surmount5_olink/surmount5_olink.npx_long.parquet
+      olink_value_col: PCNormalizedNPX
+      soma_long: surmount5_soma/surmount5_soma.rfu_long.parquet
+      soma_value_col: RFU
+    note: Minimal manuscript QC only; HTML report generation is intentionally omitted.
+  pipelines:
+    directory: analysis/pipelines/
+    scripts:
+      - run_qc.py
+      - run_mmrm.py
+      - run_mediation.py
+      - run_wgs_pcs.py
+      - surmount5_qc.py
+    note: Manuscript-facing workflow wrappers and SURMOUNT-5-specific pipeline glue.
+  scripts:
+    directory: analysis/scripts/
+    scripts:
+      - build_uniprot_map.py
+      - platform_concordance.py
+      - trajectory_classification.py
+      - maretty_step_data.py
+    note: Analysis CLIs that materialize manuscript-derived parquet outputs.
+  tools:
+    directory: analysis/tools/
+    scripts:
+      - publication_manifest.py
+      - uniprot_map.py
+    note: Manifest, compatibility, and shared helper utilities.
+  mmrm:
+    package: analysis/mmrm/
+    modules:
+      - constants.py
+      - preparation.py
+      - rinterface.py
+      - fitting.py
+      - reporting.py
+      - pipeline.py
+    entrypoint: uv run python -m analysis.mmrm
+    study_wrappers:
+      - uv run python analysis/pipelines/run_mmrm.py --platform olink
+      - uv run python analysis/pipelines/run_mmrm.py --platform soma
+  pathway:
+    package: analysis/pathway/
+    modules:
+      - constants.py
+      - cache.py
+      - loaders.py
+      - preparation.py
+      - methods.py
+      - reporting.py
+      - cli.py
+    entrypoint: uv run python -m analysis.pathway
+    outputs:
+      - pathwayRes/**/camera_combined.csv
+      - pathwayRes/**/ora_combined.csv
+  mediation:
+    package: analysis/mediation/
+    modules:
+      - constants.py
+      - core.py
+      - rinterface.py
+      - pipeline.py
+      - __main__.py
+    entrypoint: uv run python -m analysis.mediation
+    study_wrappers:
+      - uv run python analysis/pipelines/run_mediation.py --platform olink
+      - uv run python analysis/pipelines/run_mediation.py --platform soma
+    outputs:
+      - mediationRes/*.csv
+  pharmacogenomics:
+    scripts:
+      - analysis/pipelines/run_wgs_pcs.py
+      - analysis/pharmacogenomics/run.py
+    entrypoints:
+      - uv run python analysis/pipelines/run_wgs_pcs.py
+      - uv run python analysis/pharmacogenomics/run.py
+
+figures:
+  main:
+    fig1_trajectory: uv run python figures/fig1_trajectory.py
+    fig2_volcano: uv run python figures/fig2_volcano.py
+    fig3_pathway: uv run python figures/fig3_pathway.py
+    fig4_mediation: uv run python figures/fig4_mediation.py
+    fig5_ppy: uv run python figures/fig5_ppy.py
+  supplementary:
+    supp_fig1_study_design: uv run python figures/supp_fig1_study_design.py
+    supp_fig2_concordance: uv run python figures/supp_fig2_concordance.py
+    supp_fig3_biomarker_correlation: uv run python figures/supp_fig3_biomarker_correlation.py
+    supp_fig4_trajectory_lines: uv run python figures/supp_fig4_trajectory_lines.py
+    supp_fig5_tzp_induced: uv run python figures/supp_fig5_tzp_induced.py
+    supp_fig6_tzp_suppressed: uv run python figures/supp_fig6_tzp_suppressed.py
+    supp_fig7_exocrine_pancreas: uv run python figures/supp_fig7_exocrine_pancreas.py
+    supp_fig8_tzp_opposing: uv run python figures/supp_fig8_tzp_opposing.py
+    supp_fig9_cross_study: uv run python figures/supp_fig9_cross_study.py
+    supp_fig10_cross_study_pcbl: uv run python figures/supp_fig10_cross_study_pcbl.py
+    supp_fig11_pathway_ora: uv run python figures/supp_fig11_pathway_ora.py
+    supp_fig12_mediation_week24: uv run python figures/supp_fig12_mediation_week24.py
+    supp_fig13_mediation_weight_mediated: uv run python figures/supp_fig13_mediation_weight_mediated.py
+    supp_fig14_mediation_heterogeneous: uv run python figures/supp_fig14_mediation_heterogeneous.py
+    supp_fig15_gipr_glp1r_celltype: uv run python figures/supp_fig15_gipr_glp1r_celltype.py
+    supp_fig16_reg4: uv run python figures/supp_fig16_reg4.py
+
+figure_bundles:
+  main_figures:
+    command: uv run python figures/build_main_figures.py
+    output: figures/main_figures.pdf
+  supplementary_figures:
+    command: uv run python figures/build_supplementary_figures.py
+    output: figures/supplementary_figures.pdf
+
+tables:
+  supplementary_workbook:
+    command: uv run python tables/build_all.py
+    output: tables/supplementary_tables.xlsx
+
+validation:
+  pixi_sync:
+    commands:
+      - pixi install --locked
+      - pixi run sync
+      - pixi run check-r
+    note: Syncs the locked pixi environment and enforces the committed uv.lock.
+  command_index:
+    command: pixi run manifest-list
+    note: Lists reproducibility entrypoints without requiring protected data.
+  fast_validation:
+    command: pixi run validate
+    note: Runs manifest consistency checks, the figure-style audit, and unit tests.
+  style_audit:
+    command: uv run python analysis/tools/publication_manifest.py audit-figures
+  manifest_check:
+    command: uv run python analysis/tools/publication_manifest.py check
+  figure_baseline_record:
+    command: uv run python analysis/tools/publication_manifest.py record-figure-baseline --baseline figures/figure_regression_baseline.json
+    note: Requires protected inputs; rerender after any figure change to refresh the approved baseline.
+  figure_baseline_check:
+    command: uv run python analysis/tools/publication_manifest.py compare-figure-baseline --baseline figures/figure_regression_baseline.json
+    note: Rerenders figures to PNG and compares hashes/dimensions against the recorded baseline.
+  figure_smoke:
+    note: Run individual figure commands above after protected inputs are mounted.

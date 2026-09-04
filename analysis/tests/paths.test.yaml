@@ -1,0 +1,6 @@
+mmrm_root: ".pytest_scratch/test_paths/mmrm"
+qc_root: ".pytest_scratch/test_paths/qc"
+pheno_root: ".pytest_scratch/test_paths/pheno"
+geno_root: ".pytest_scratch/test_paths/geno"
+qa_root: ".pytest_scratch/test_paths/qa"
+raw_proteomics_root: ".pytest_scratch/test_paths/raw_proteomics"

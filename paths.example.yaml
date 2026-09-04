@@ -1,0 +1,10 @@
+# Copy to paths.yaml and replace with local DNAnexus/dxfuse mount roots.
+# Or keep the file elsewhere and set SURMOUNT5_PATHS_YAML=/absolute/path/to/paths.yaml.
+# mmrm_root, qc_root, and pheno_root are required for the main figure/table entrypoints.
+# geno_root, qa_root, and raw_proteomics_root are needed by the genetics/QC utilities only.
+mmrm_root: "/mnt/project/<workspace>/results/mmrm"
+qc_root: "/mnt/project/<workspace>/results/quality_control"
+pheno_root: "/mnt/project/<workspace>/data/<timestamp>/surmount5/processed/pheno_data"
+geno_root: "/mnt/project/<workspace>/data/<timestamp>/surmount5/processed"
+qa_root: "/mnt/project/<workspace>/results/qa/surmount5"
+raw_proteomics_root: "/mnt/project/<workspace>/data/<timestamp>/surmount5/source/proteomics"

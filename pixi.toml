@@ -1,0 +1,78 @@
+[workspace]
+name = "surmount5-proteomics"
+version = "0.1.0"
+description = "Standalone manuscript environment for the SURMOUNT-5 proteomics paper"
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.13.13.*"
+r-base = "4.5.3.*"
+uv = "*"
+compilers = "*"
+make = "*"
+pkg-config = "*"
+libuv = "*"
+plink2 = "*"
+r-arrow = "*"
+"r-data.table" = "*"
+r-mmrm = "0.3.17.*"
+r-emmeans = "2.0.3.*"
+r-mediation = "4.5.1.*"
+bioconductor-limma = "3.66.0.*"
+bioconductor-gdsfmt = "1.46.0.*"
+bioconductor-snprelate = "1.44.0.*"
+liblzma-devel = ">=5.8.3,<6"
+rpy2 = "3.6.7.*"
+
+[target.linux-64.activation.env]
+R_HOME = "$CONDA_PREFIX/lib/R"
+R_LIBS = "$CONDA_PREFIX/lib/R/library"
+R_LIBS_USER = "$CONDA_PREFIX/lib/R/library"
+UV_PROJECT_ENVIRONMENT = "$CONDA_PREFIX"
+VIRTUAL_ENV = "$CONDA_PREFIX"
+
+[tasks]
+sync = "env -u VIRTUAL_ENV UV_PROJECT_ENVIRONMENT=.pixi/envs/default uv sync --locked --inexact"
+check-r = '''
+Rscript -e '
+expected <- c(
+  mmrm = "0.3.17",
+  emmeans = "2.0.3",
+  mediation = "4.5.1",
+  limma = "3.66.0",
+  gdsfmt = "1.46.0",
+  SNPRelate = "1.44.0"
+)
+installed <- installed.packages()
+required <- c("arrow", "data.table")
+missing_required <- required[!required %in% rownames(installed)]
+if (length(missing_required)) {
+  stop(sprintf("Missing R support packages: %s", paste(missing_required, collapse = ", ")))
+}
+missing <- names(expected)[!names(expected) %in% rownames(installed)]
+if (length(missing)) {
+  stop(sprintf("Missing R packages: %s", paste(missing, collapse = ", ")))
+}
+bad <- names(expected)[vapply(
+  names(expected),
+  function(pkg) installed[pkg, "Version"] != expected[[pkg]],
+  logical(1)
+)]
+if (length(bad)) {
+  stop(sprintf(
+    "R package version mismatch: %s",
+    paste(sprintf("%s=%s (expected %s)", bad, installed[bad, "Version"], expected[bad]), collapse = "; ")
+  ))
+}
+cat("R packages OK\\n")
+'
+'''
+manifest-list = "uv run python analysis/tools/publication_manifest.py list"
+manifest-check = "uv run python analysis/tools/publication_manifest.py check"
+audit-figures = "uv run python analysis/tools/publication_manifest.py audit-figures"
+test = "uv run pytest analysis/tests/ -q"
+validate = "uv run python analysis/tools/publication_manifest.py check && uv run python analysis/tools/publication_manifest.py audit-figures && uv run pytest analysis/tests/ -q"
+build-main-figures = "uv run python figures/build_main_figures.py"
+build-supplementary-figures = "uv run python figures/build_supplementary_figures.py"
+build-tables = "uv run python tables/build_all.py"

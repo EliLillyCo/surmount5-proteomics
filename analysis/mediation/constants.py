@@ -1,0 +1,13 @@
+"""Constants for the mediation wrapper."""
+
+CAT_COVARIATES: list[str] = ["SEX"]
+CONT_COVARIATES: list[str] = ["AGE", "WGTBL"]
+ANNOTATION_COLUMNS: tuple[str, ...] = ("Assay", "allQC")
+DEFAULT_VISITS: tuple[int, ...] = (8, 20)
+DEFAULT_RESPONSE_VAR = "NPX"
+DEFAULT_RESPONSE_VAR_BL = "NPXBL"
+DEFAULT_TREAT_COL = "TRT01A"
+DEFAULT_CONTROL_VALUE = "SEMA2.4mgorMTD"
+DEFAULT_TREAT_VALUE = "TZP15mgorMTD"
+DEFAULT_SIMS = 100_000
+SEED = 0
