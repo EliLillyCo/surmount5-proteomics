@@ -1,0 +1,70 @@
+# Olink QC configuration of the SURMOUNT-5 Olink run (analysis/qc/study.py reads it).
+#
+# A value "paths:{study}_<name>" is the paths config key of that name for the run
+# ({study} becomes surmount5_olink); "paths:{trial}_<name>" is a key both platform runs
+# share ({trial} becomes surmount5). Every file path is reached that way, so no mount
+# path is written here. Tables other than [steps] are the trial config the QC library
+# reads (analysis/qc/config.py, TrialConfig); [steps] holds the options each QC step is
+# called with (analysis/qc/driver.py).
+
+platform = "olink"
+# The QC data column (vendor flag missingness, CV, LOD detection, duplicate assays,
+# PCA and median/IQR outliers). The sex and age models, the Lp identity scores and the
+# pQTL scores read the platform's identity layer, PCNormalizedNPX on Olink.
+data_col = "PCNormalizedNPX"
+# A TOML holding the run's [[corrections]] entries (SHA-256 identifiers only); a run
+# with none has a file with no entries.
+corrections = "paths:{study}_qc_corrections"
+
+[visits]
+# Analysis, baseline and screening visit codes; the pre-dose baseline exception reads
+# screening dates from the screening visit.
+baseline = 2
+analysis = [2, 8, 20]
+screening = [1]
+
+[clinical]
+# The on-treatment window ends at last dose + 7 days for discontinuers and is open for
+# completers. The earliest non-null date among window_stop_events ends the window early.
+window_stop_events = ["PROHMSDT", "BARIDT", "NSDSDT", "NSDTDT"]
+
+[pqtl]
+enabled = true
+reference_catalog = ["ukbppp", "jhs", "ckb", "mesa", "gh"]
+genotype_dir = "paths:{trial}_genotype_dir"
+# The PGEN family whose PSAM IIDs are USUBJIDs.
+pgen_pattern = "paths:{trial}_pgen_pattern"
+kinship_table = "paths:{trial}_kinship_table"
+ancestry_pcs = "paths:{trial}_ancestry_pcs"
+
+[manifest]
+# The manifest is built from the raw vendor key and the ADaM tables.
+raw_key = "paths:{study}_raw_key"
+adsl = "paths:{trial}_pheno_root/adsl.parquet"
+adlb = "paths:{trial}_pheno_root/adlb.parquet"
+advs = "paths:{trial}_pheno_root/advs.parquet"
+
+[manifest.columns]
+# Assign visits through the subject-and-date match.
+sample_id = "Unique Sample ID"
+subject = "Patient ID"
+date = "Date Collected"
+accession = "Accession #"
+sample_type = "Sample Type"
+bridge_flag = "Deidentified Donor ID"
+
+[steps]
+missing_threshold = 0.2
+assay_warn_threshold = 0.1
+lod_method = "NCLOD"
+inter_cv_threshold = 25.0
+duplicate_corr_threshold = 0.8
+clinical_vars = ["AGE", "SEX", "TRT01A", "COUNTRY", "SITEID", "RACE"]
+force_categorical = ["SITEID", "VISITNUM"]
+group_col = ["TRT01A"]
+sex_col = "SEX"
+age_col = "VISITAGE"
+age_threshold = 15.0
+age_std_threshold = 5.5
+sample_date_col = "ADT"
+random_seed = 0

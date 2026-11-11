@@ -1,0 +1,611 @@
+# Manuscript reproduction manifest.
+#
+# This file lists the manuscript code paths. Trial data and large derived result directories
+# are resolved through paths.yaml / paths.example.yaml rather than hardcoded here.
+#
+# `analysis_outputs.<stage>.downstream` also drives the pre-flight of the figure and table builds
+# (analysis.tools.manifest_stages.require_stage_outputs): a stage that lists `figures/<script>.py`, the bare
+# word `figures`, or `tables/<module>.py` must have its `analysis/outputs/` files present before
+# that build starts; a missing one is reported with the stage and command that writes it.
+
+version: 1
+study: SURMOUNT-5
+covariate_model: covar_AGE_SEX
+
+inputs:
+  path_config:
+    file: paths.yaml
+    example: paths.example.yaml
+    note: Data and output roots; copy paths.example.yaml to paths.yaml or set SURMOUNT5_PATHS_YAML.
+  mounted_result_roots:
+    mmrm_root: paths.yaml:mmrm_root
+    qc_root: paths.yaml:qc_root
+    pheno_root: paths.yaml:pheno_root
+    geno_root: paths.yaml:geno_root
+    qa_root: paths.yaml:qa_root
+
+analysis_outputs:
+  # In run order: a stage comes after every stage whose `downstream` names its script
+  # (publication_manifest.py check enforces it). `purpose` is the README stage table's text.
+  # `read_through` names the functions through which code reads a stage's output (dotted
+  # module.name: a mounted output's readers, or analysis.protein_labels.marker_labels for the
+  # annotation), so the static check can tell which figure and table reads it; analysis/outputs/
+  # and data/external/ files are otherwise matched by file name.
+  qc_reference:
+    purpose: fetch the QC's published reference tables and cis-pQTL catalogs, parse them and stage the pinned SomaScan catalogs, checksum-verified
+    command: pixi run python analysis/external/qc_reference.py --pvar-dir <paths.yaml:surmount5_genotype_dir> --pvar-pattern <paths.yaml:surmount5_fenland_pvar_pattern> --fenland-xlsx <paths.yaml:fenland_science_xlsx>
+    inputs:
+      - paths.yaml:surmount5_genotype_dir
+      - paths.yaml:fenland_science_xlsx
+    outputs:
+      - analysis/qc/data/41467_2025_59034_MOESM3_ESM.Table_S2.tsv
+      - analysis/qc/data/41591_2024_3164_MOESM3_ESM.Table_S1.tsv
+      - data/external/pqtl/parsed/
+    read_through:
+      - analysis.qc_paths.PQTL_CATALOG_DIR
+    downstream:
+      - analysis/pipelines/run_qc.py
+      - tables/suppl_assay_qc.py
+    note: >-
+      Third-party QC reference inputs: the untracked sex and ProtAge tables and the cis-pQTL
+      catalogs (Zenodo, publisher supplements, Ensembl's GRCh37-to-GRCh38 mapping). UniProt accessions come
+      from Olink's Explore 3072 Fixed LOD file for MESA Olink, deCODE's ST02 for AGES and the 2025 CKB
+      SomaScan catalog for MESA SomaScan. The CKB Atlas (Zenodo record 21503247), AGES and INTERVAL
+      SomaScan cis catalogs are parsed from their published workbooks like the others. The SomaScan run
+      selects eight catalogs (ckb_soma is the 2026 CKB Atlas); Tables S1 and S2 read the same 13
+      catalogs. Fenland's Science supplementary workbook is downloaded in a browser and passed
+      with --fenland-xlsx from paths.yaml:fenland_science_xlsx. Every parsed frame is
+      checked against its content pin in analysis/external/pqtl_catalogs.py. Fenland's allele check
+      reads trial PVARs and its eaf is separately pinned in the full-frame digest.
+  hpa_disease_atlas:
+    purpose: download the HPA pan-disease blood atlas differential-expression table, checksum-verified
+    command: pixi run python analysis/external/hpa_disease_atlas.py
+    outputs:
+      - data/external/hpa/blood_pea_disease_de.tsv.zip
+    downstream:
+      - analysis/pipelines/run_disease_reversal.py
+    note: >-
+      External dataset, fetched on first use and SHA-256 pinned (not tracked). Human Protein Atlas v25.1
+      pan-disease blood atlas, disease-versus-control differential expression (Olink Explore 1536);
+      Álvez et al., Science 2025, doi:10.1126/science.adx2678; CC BY 4.0.
+  ensembl_uniprot:
+    purpose: download the Ensembl release 116 gene to UniProt cross-references, checksum-verified
+    command: pixi run python -m analysis.external.ensembl_uniprot
+    outputs:
+      - data/external/ensembl/Homo_sapiens.GRCh38.116.uniprot.tsv.gz
+    downstream:
+      - analysis/pipelines/run_disease_reversal.py
+    note: >-
+      Fetched on first use and SHA-256 pinned (f1e26db2...5864; not tracked). Gives the Ensembl gene ID of each
+      Olink accession that carries one gene. The reversal analysis matches an HPA gene symbol to an
+      assay gene by symbol first, then through the Ensembl gene ID for symbols we do not measure.
+  hormone_atlas_pancreas_gpcr:
+    purpose: per-cell-type GIPR and GLP1R expression from the Hormone Cell Atlas pancreas h5ad
+    command: pixi run python analysis/external/recompute_hormone_atlas_pancreas.py
+    inputs:
+      - data/external/hormone_atlas/Pancreas_annotated.h5ad
+    outputs:
+      - data/external/hormone_atlas_pancreas_gpcr.parquet
+    downstream:
+      - figures/supp_fig_gipr_glp1r_celltype.py
+    note: >-
+      Hormone Cell Atlas pancreas h5ad (about 911 MB), fetched on first use; SHA-256 pinned
+      (a1e638e8...78e3) and verified on every use.
+  science_aeb2672_tableS6A:
+    purpose: GIP-receiving cell types, Science Table S6A (Fei et al. 2026), from a browser-downloaded workbook
+    command: pixi run python analysis/external/science_aeb2672_tableS6A.py --xlsx <paths.yaml:science_aeb2672_xlsx>
+    inputs:
+      - paths.yaml:science_aeb2672_xlsx
+    outputs:
+      - data/external/science_aeb2672_tableS6A.parquet
+    downstream:
+      - figures/fig5_ppy.py
+    note: >-
+      Science supplementary Table S6A (Fei et al. 2026, doi:10.1126/science.aeb2672). The workbook
+      is downloaded in a browser; SHA-256 pinned
+      (c235a13f...6077) and verified before it is read.
+  vendor_assay_tables:
+    purpose: assay annotation from the vendor assay lists (Olink's public list, the SomaLogic menu) with the tracked UniProt gene-update layer, multi-target assays resolved per accession
+    command: pixi run python analysis/external/vendor_assay_tables.py --menu <paths.yaml:somascan_menu_xlsx>
+    inputs:
+      - data/vendor/olink-explore-ht-assay-list.xlsx
+      - paths.yaml:somascan_menu_xlsx
+      - analysis/reference/assay_gene_updates.tsv
+      - data/external/hgnc/hgnc_complete_set_2026-09-04.tsv
+    outputs:
+      - data/external/vendor_assay_tables/assay_annotation.tsv
+      - data/external/vendor_assay_tables/olink_explore_ht_annotation.tsv
+      - data/external/vendor_assay_tables/somascan_11k_annotation.tsv
+      - data/external/vendor_assay_tables/hgnc_aliases.tsv
+      - data/external/vendor_assay_tables/assay_annotation.inputs.json
+    read_through:
+      - analysis.protein_labels.marker_labels
+    downstream:
+      - analysis/pipelines/build_uniprot_map.py
+      - analysis/pathway/
+      - analysis/pipelines/run_disease_reversal.py
+      - figures/fig1_trajectory.py
+      - figures/fig2_volcano.py
+      - figures/fig4_mediation.py
+      - figures/fig5_ppy.py
+      - figures/supp_fig_exocrine_pancreas.py
+      - figures/supp_fig_cross_study.py
+      - figures/supp_fig_mediation_week24.py
+      - figures/supp_fig_tzp_induced.py
+      - figures/supp_fig_tzp_suppressed.py
+      - figures/supp_fig_sema_greater.py
+      - figures/supp_fig_tzp_opposing.py
+      - figures/supp_fig_cross_study_pcbl.py
+      - figures/supp_fig_mediation_weight_mediated.py
+      - figures/supp_fig_mediation_heterogeneous.py
+      - tables/suppl_concordance.py
+    note: >-
+      Base layer: the two vendor files as published, read from data/vendor/,
+      each SHA-256 pinned and verified before it is read. Olink Explore HT assay list (Doc 1562, v2026-06-24,
+      a48a0f7d...6a8), fetched without a login when data/vendor/ holds no copy; SomaScan 11K v5.0
+      plasma/serum annotated menu, SL00000906 Rev 10 (2026-03, 4284504d...2bf), a manual download from
+      menu.somalogic.com (SomaLogic account) passed with --menu from paths.yaml:somascan_menu_xlsx. Update
+      layer: analysis/reference/assay_gene_updates.tsv, written from UniProt (release on every row) by
+      analysis/external/assay_gene_updates.py, which the build never calls; gene symbols are the HGNC
+      symbols UniProt 2026_03 records and paralog accessions take every linked gene. The stage
+      fetches the pinned monthly archive of the HGNC complete set (a dated public URL, 6f43d6ff...d20; --hgnc
+      for a saved copy), takes each symbol's HGNC ID from it (the annotation's HGNC_ID; the update-layer
+      generator checks these equal UniProt's) and writes the HGNC alias table hgnc_aliases.tsv beside the
+      annotation; neither is tracked. The pathway CLI reads the annotation directly
+      (--annotation, default its output path).
+  qc:
+    purpose: Olink and SomaScan sample and assay QC from the raw vendor files, ADaM and genotypes
+    command: pixi run python analysis/pipelines/run_qc.py --study both
+    inputs:
+      - paths.yaml:surmount5_olink_data
+      - paths.yaml:surmount5_olink_raw_key
+      - paths.yaml:surmount5_soma_data
+      - paths.yaml:surmount5_soma_raw_key
+      - paths.yaml:surmount5_pheno_root
+      - paths.yaml:surmount5_genotype_dir
+      - paths.yaml:surmount5_kinship_table
+      - paths.yaml:surmount5_ancestry_pcs
+      - paths.yaml:surmount5_olink_qc_corrections
+      - paths.yaml:surmount5_soma_qc_corrections
+    outputs:
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.npx_long.parquet
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.sample_qc_summary.tsv
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.assay_qc_summary.tsv
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.exclusion_table.tsv
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.identity_events.parquet
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.dna_link.parquet
+      - paths.yaml:qc_root/surmount5_olink/manifest.parquet
+      - paths.yaml:qc_root/surmount5_olink/manifest_build_report.json
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.rfu_long.parquet
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.sample_qc_summary.tsv
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.assay_qc_summary.tsv
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.exclusion_table.tsv
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.identity_events.parquet
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.dna_link.parquet
+      - paths.yaml:qc_root/surmount5_soma/manifest.parquet
+      - paths.yaml:qc_root/surmount5_soma/manifest_build_report.json
+    read_through:
+      - analysis.qc_contract.qc_dir
+    downstream:
+      - analysis/pipelines/qc_exclusion_breakdown.py
+      - analysis/pipelines/build_uniprot_map.py
+      - analysis/pipelines/run_mmrm.py
+      - analysis/pipelines/run_proteome_pca.py
+      - analysis/pipelines/run_mmrm_sex.py
+      - analysis/pipelines/run_mediation.py
+      - analysis/pipelines/platform_concordance.py
+      - analysis/pipelines/run_disease_reversal.py
+      - analysis/pharmacogenomics/run.py
+      - figures/supp_fig_biomarker_correlation.py
+      - tables/suppl_assay_qc.py
+      - tables/suppl_characteristics.py
+      - tables/suppl_biomarker_correlation.py
+    note: Every reader goes through analysis/qc_contract.py.
+  proteome_pca:
+    purpose: pooled per-platform proteome PCA and REML mixed-model variance attribution
+    command: pixi run python analysis/pipelines/run_proteome_pca.py
+    inputs:
+      - paths.yaml:qc_root
+      - paths.yaml:pheno_root/adsl.parquet
+      - paths.yaml:pheno_root/advs.parquet
+      - paths.yaml:pheno_root/adlb.parquet
+      - paths.yaml:surmount5_olink_data
+      - paths.yaml:surmount5_soma_data
+    outputs:
+      - analysis/outputs/proteome_pca_scores.parquet
+      - analysis/outputs/proteome_pca_variance.parquet
+      - analysis/outputs/proteome_pca_partition.parquet
+      - analysis/outputs/proteome_pca_model_olink.parquet
+      - analysis/outputs/proteome_pca_model_soma.parquet
+    downstream:
+      - figures/supp_fig_proteome_pca.py
+  qc_exclusion_breakdown:
+    purpose: per-gate QC exclusion counts for the CONSORT diagram
+    command: pixi run python analysis/pipelines/qc_exclusion_breakdown.py
+    inputs:
+      - paths.yaml:qc_root
+      - paths.yaml:pheno_root/adsl.parquet
+      - paths.yaml:surmount5_olink_qc_corrections
+      - paths.yaml:surmount5_soma_qc_corrections
+    outputs:
+      - analysis/outputs/qc_exclusion_breakdown.parquet
+    downstream:
+      - figures/supp_fig_study_design.py
+  uniprot_map:
+    purpose: Olink and SomaScan marker to gene and UniProt map, the analyzed assays of the QC assay summaries with the accessions and genes of the assay annotation
+    command: pixi run python analysis/pipelines/build_uniprot_map.py
+    inputs:
+      - paths.yaml:qc_root/surmount5_olink/surmount5_olink.assay_qc_summary.tsv
+      - paths.yaml:qc_root/surmount5_soma/surmount5_soma.assay_qc_summary.tsv
+      - data/external/vendor_assay_tables/assay_annotation.tsv
+    outputs:
+      - analysis/outputs/uniprot_map.parquet
+    downstream:
+      - figures/fig1_trajectory.py
+      - figures/fig3_pathway.py
+      - figures/fig4_mediation.py
+      - figures/supp_fig_exocrine_pancreas.py
+      - figures/supp_fig_mediation_week24.py
+      - figures/supp_fig_tzp_induced.py
+      - figures/supp_fig_tzp_suppressed.py
+      - figures/supp_fig_sema_greater.py
+      - figures/supp_fig_pathway_ora.py
+      - figures/supp_fig_mediation_weight_mediated.py
+      - figures/supp_fig_mediation_heterogeneous.py
+      - tables/suppl_assay_qc.py
+      - tables/suppl_baseline.py
+      - tables/suppl_trajectory.py
+      - tables/suppl_across_treatment.py
+      - tables/suppl_sex_interaction.py
+      - tables/suppl_pathway_enrichment.py
+      - tables/suppl_mediation.py
+  mmrm:
+    purpose: primary MMRM of change from baseline (TZP vs SEMA, weeks 24 and 72, age and sex), both platforms
+    command: pixi run python analysis/pipelines/run_mmrm.py
+    inputs:
+      - paths.yaml:qc_root
+      - paths.yaml:pheno_root
+    outputs:
+      - paths.yaml:mmrm_root/surmount5_*/covar_AGE_SEX/rawOutput/
+      - paths.yaml:mmrm_root/surmount5_*/covar_AGE_SEX/finalRes/
+    read_through:
+      - analysis.mmrm_outputs.across_treatment_csv
+      - analysis.mmrm_outputs.pcbl_csv
+      - analysis.mmrm_outputs.within_treatment_csv
+      - analysis.mmrm_outputs.chg_diff_csv
+      - analysis.mmrm_outputs.chg_lsmeans_csv
+      - analysis.mmrm_outputs.baseline_diff_csv
+    downstream:
+      - analysis/pipelines/trajectory_classification.py
+      - analysis/pipelines/run_disease_reversal.py
+      - analysis/pathway/
+      - figures/fig1_trajectory.py
+      - figures/fig2_volcano.py
+      - figures/fig3_pathway.py
+      - figures/fig5_ppy.py
+      - figures/supp_fig_exocrine_pancreas.py
+      - figures/supp_fig_cross_study.py
+      - figures/supp_fig_tzp_induced.py
+      - figures/supp_fig_tzp_suppressed.py
+      - figures/supp_fig_sema_greater.py
+      - figures/supp_fig_tzp_opposing.py
+      - figures/supp_fig_cross_study_pcbl.py
+      - figures/supp_fig_pathway_ora.py
+      - tables/suppl_characteristics.py
+      - tables/suppl_baseline.py
+      - tables/suppl_trajectory.py
+      - tables/suppl_across_treatment.py
+      - tables/suppl_pathway_enrichment.py
+    note: >-
+      Kenward-Roger with the linear KR covariance, r-mmrm 0.3.19; Olink NPX with vendor
+      AssayQC FAIL points dropped, SomaScan log2 of the non-ANML RFU. A fit
+      failure raises. --platform olink|soma runs one platform; --n-jobs -1 uses all CPUs but one.
+  mmrm_sex_interaction:
+    purpose: treatment x visit x sex MMRM with per-sex covariance (Tables S13-S14)
+    command: pixi run python analysis/pipelines/run_mmrm_sex.py
+    inputs:
+      - paths.yaml:qc_root
+      - paths.yaml:pheno_root
+    outputs:
+      - paths.yaml:mmrm_root/surmount5_*/covar_AGE_SEX_sexint/surmount5_sexint.csv
+    read_through:
+      - analysis.mmrm_outputs.sexint_csv
+    downstream:
+      - tables/suppl_sex_interaction.py
+    note: Per-sex unstructured covariance.
+  mediation:
+    purpose: weight mediation of the TZP vs SEMA effect at weeks 24 and 72, 100,000 bootstrap draws, seed 0
+    command: pixi run python analysis/pipelines/run_mediation.py
+    resumes: true
+    inputs:
+      - paths.yaml:qc_root
+      - paths.yaml:pheno_root
+    outputs:
+      - paths.yaml:mmrm_root/surmount5_*/covar_AGE_SEX/mediationRes/surmount5_covar_AGE_SEX_mediation_PCTCHG_WGT.csv
+      - paths.yaml:mmrm_root/surmount5_*/covar_AGE_SEX/mediationRes/surmount5_covar_AGE_SEX_mediation_PCTCHG_WGT.fingerprint.json
+    read_through:
+      - analysis.mediation.results.mediation_csv_path
+    downstream:
+      - figures/fig4_mediation.py
+      - figures/supp_fig_mediation_week24.py
+      - figures/supp_fig_mediation_weight_mediated.py
+      - figures/supp_fig_mediation_heterogeneous.py
+      - tables/suppl_mediation.py
+    note: >-
+      numpy nonparametric bootstrap with Sobel/Wald p-values. An existing final CSV or
+      visit checkpoint is reused only when its fingerprint file matches the configuration, the
+      input rows, the annotation and the marker x visit keys of the run; otherwise the stage
+      exits naming what differs.
+  platform_concordance:
+    purpose: baseline Olink-SomaScan Spearman correlations of assay pairs sharing an annotated UniProt accession and their two-component GMM
+    command: pixi run python analysis/pipelines/platform_concordance.py
+    inputs:
+      - paths.yaml:qc_root
+      - data/external/vendor_assay_tables/assay_annotation.tsv
+    outputs:
+      - analysis/outputs/platform_concordance.parquet
+    downstream:
+      - figures/supp_fig_concordance.py
+      - tables/suppl_assay_qc.py
+      - tables/suppl_concordance.py
+    note: >-
+      Olink on PCNormalizedNPX, the QC layer. Assays are paired on the accessions of the assay
+      annotation (stage vendor_assay_tables); a multi-accession assay pairs with every aptamer sharing
+      an accession.
+  hcop:
+    purpose: HGNC's HCOP human-mouse ortholog predictions, for CellMarker's mouse gene sets
+    command: pixi run python analysis/external/hcop.py
+    inputs: []
+    outputs:
+      - data/external/hcop/human_mouse_hcop_fifteen_column.txt.gz
+    downstream:
+      - analysis/pathway/
+    note: >-
+      human_mouse_hcop_fifteen_column.txt.gz from the HGNC download bucket, the pinned release (object
+      generation 1790858706025272 in the URL), SHA-256 0cfb78e4...cdb35, checked on every read; HCOP replaces
+      the file monthly, so a reader without that generation passes --path with a saved copy. Not
+      tracked.
+  gene_sets:
+    purpose: download the seven Enrichr gene-set libraries the pathway stage reads, checksum-verified
+    command: pixi run python analysis/external/gene_sets.py
+    inputs: []
+    outputs:
+      - data/external/gene_sets/
+    downstream:
+      - analysis/pathway/
+    note: >-
+      Enrichr (Kuleshov et al., Nucleic Acids Res 2016) libraries as {set: [genes]} JSON, one file each, SHA-256
+      pinned in analysis/pathway/constants.py (GENE_SET_SHA256); a library present with its pinned digest is not
+      downloaded again, and a present file or a download with another digest raises. Enrichr revises
+      libraries in place, so a download passes only while Enrichr serves the pinned bytes.
+  pathway:
+    purpose: cameraPR and ORA over seven pinned Enrichr libraries on the TZP vs SEMA contrasts, both platforms
+    command: >-
+      pixi run python -m analysis.pathway batch --base-dir <paths.yaml:mmrm_root> --n-jobs 6
+    inputs:
+      - paths.yaml:mmrm_root/surmount5_*/covar_AGE_SEX/rawOutput/
+      - data/external/vendor_assay_tables/assay_annotation.tsv
+      - data/external/vendor_assay_tables/hgnc_aliases.tsv
+      - data/external/hcop/human_mouse_hcop_fifteen_column.txt.gz
+      - data/external/gene_sets/
+      - analysis/reference/gene_set_corrections.tsv
+    outputs:
+      - paths.yaml:mmrm_root/surmount5_*/covar_AGE_SEX/pathwayRes/acTrt/*/camera_combined.csv
+      - paths.yaml:mmrm_root/surmount5_*/covar_AGE_SEX/pathwayRes/acTrt/*/ora_combined.csv
+    read_through:
+      - analysis.mmrm_outputs.pathway_csv
+    downstream:
+      - figures/fig3_pathway.py
+      - figures/supp_fig_pathway_ora.py
+      - tables/suppl_pathway_enrichment.py
+    note: >-
+      Only the TZP - SEMA contrasts. The assay -> gene mapping is the assay annotation (stage
+      vendor_assay_tables), refused when built from another update layer or alias table; assays marked
+      Excluded_From_Gene_Level are not ranked. The seven Enrichr libraries
+      in data/external/gene_sets/ (stage gene_sets; --cache-dir) are SHA-256 pinned in analysis/pathway/constants.py and
+      verified before use, then their members are translated to our symbols through the HGNC alias table
+      built with the annotation (--aliases; case-insensitive), and CellMarker's mouse sets through
+      HCOP-verified human orthologs (--hcop: kept when the member is one of its orthologs' symbols, mapped
+      when it has exactly one ortholog, dropped otherwise). The ORA query is gene-level: a
+      gene's P is the Simes combination of its assays' P, BH over genes, query = genes at FDR < 0.05;
+      cameraPR keeps inter.gene.cor 0.01. Two Reactome clotting sets get tissue factor as F3 in place of
+      TF (transferrin in HGNC) from analysis/reference/gene_set_corrections.tsv, applied at load.
+  trajectory_classification:
+    purpose: temporal response class of every assay in each arm (rules in analysis/trajectory.py)
+    command: pixi run python analysis/pipelines/trajectory_classification.py
+    inputs:
+      - paths.yaml:mmrm_root/surmount5_olink/covar_AGE_SEX/rawOutput/
+      - paths.yaml:mmrm_root/surmount5_soma/covar_AGE_SEX/rawOutput/
+      - paths.yaml:mmrm_root/surmount5_olink/covar_AGE_SEX/finalRes/pcblRes/
+      - paths.yaml:mmrm_root/surmount5_soma/covar_AGE_SEX/finalRes/pcblRes/
+    outputs:
+      - analysis/outputs/trajectory_olink.parquet
+      - analysis/outputs/trajectory_soma.parquet
+    downstream:
+      - figures/fig1_trajectory.py
+      - figures/fig5_ppy.py
+      - figures/supp_fig_exocrine_pancreas.py
+      - figures/supp_fig_tzp_induced.py
+      - figures/supp_fig_tzp_suppressed.py
+      - figures/supp_fig_sema_greater.py
+      - figures/supp_fig_tzp_opposing.py
+      - tables/suppl_trajectory.py
+  disease_reversal:
+    purpose: Fig 3b disease-signature reversal of the week-72 Olink TZP vs SEMA z, baseline-correlation rotation null
+    command: nice -n 10 pixi run python analysis/pipelines/run_disease_reversal.py --week 72
+    inputs:
+      - paths.yaml:mmrm_root/surmount5_olink/covar_AGE_SEX/rawOutput/
+      - paths.yaml:qc_root
+      - paths.yaml:pheno_root
+      - data/external/vendor_assay_tables/assay_annotation.tsv
+      - data/external/ensembl/Homo_sapiens.GRCh38.116.uniprot.tsv.gz
+      - data/external/hpa/blood_pea_disease_de.tsv.zip
+    outputs:
+      - analysis/outputs/disease_reversal_olink_wk72.parquet
+    downstream:
+      - figures/fig3_pathway.py
+    note: Fig 3b disease-signature reversal; 1,000,000 rotation-null draws per disease (ROTATION_DRAWS), seed 0, each assay once per signature, assays marked Excluded_From_Gene_Level omitted; one process.
+  maretty_step_data:
+    purpose: STEP 1 and STEP 2 semaglutide SomaScan effects from the Maretty et al. 2025 supplement
+    command: pixi run python analysis/pipelines/maretty_step_data.py
+    inputs:
+      - data/external/maretty_2025_supp.xlsx
+    outputs:
+      - analysis/outputs/maretty_step_data.parquet
+    downstream:
+      - figures/fig5_ppy.py
+      - figures/supp_fig_cross_study.py
+      - figures/supp_fig_cross_study_pcbl.py
+    note: >-
+      Nature Medicine supplementary workbook (Maretty et al. 2025), fetched on first use; SHA-256
+      pinned (4fd2be8d...a49d) and verified on every use, the cached copy included.
+  wgs_pcs:
+    purpose: LD-pruned genome and SNPRelate genetic principal components for the E354Q model
+    command: pixi run python analysis/pipelines/run_wgs_pcs.py
+    code_roots:
+      - analysis/pharmacogenomics/build_pruned_genome.py
+      - analysis/pharmacogenomics/compute_wgs_pcs.R
+    inputs:
+      - paths.yaml:qa_root/2000_genomic_data_processing/2200_analysis_data/merged_chr/
+    outputs:
+      - paths.yaml:qa_root/2000_genomic_data_processing/2200_analysis_data/pruned_genome/2203_*_pruned_genome.{bed,bim,fam}
+      - paths.yaml:qa_root/3000_genomic_data_summary/3100_pca/3101_*_pruned_genome_pc.csv
+    note: >-
+      Exactly one PC CSV may match; analysis/pharmacogenomics/run.py raises with the candidate
+      list otherwise. The stage reads the per-chromosome merged PLINK files under qa_root and uses
+      geno_root only for the name of its distribution folder, so geno_root is not a fingerprinted
+      input.
+    downstream:
+      - analysis/pharmacogenomics/run.py
+  pharmacogenomics:
+    purpose: GIPR E354Q genotype x treatment MMRM for PPY (Supplementary Fig. 11)
+    command: pixi run python analysis/pharmacogenomics/run.py
+    inputs:
+      - paths.yaml:surmount5_chr19_pvcf
+      - paths.yaml:surmount5_pheno_geno_linking
+      - paths.yaml:surmount5_olink_qc_corrections
+      - paths.yaml:surmount5_soma_qc_corrections
+      - paths.yaml:pheno_root/adsl.parquet
+      - paths.yaml:qa_root/3000_genomic_data_summary/3100_pca/3101_*_data*_qced_maf0.01_pruned_genome_pc.csv
+      - paths.yaml:qc_root
+    outputs:
+      - analysis/outputs/genotype_E354Q_frame.parquet
+      - analysis/outputs/genotype_E354Q_contrasts.parquet
+    downstream:
+      - figures/supp_fig_e354q.py
+    note: >-
+      Takes no arguments. P values are nominal. The linking table is corrected by the
+      QC's dna_relink entries, and the run stops on a QC genotype link marked suspect.
+modules:
+  environment:
+    pixi_tasks:
+      - pixi run manifest-list
+      - pixi run manifest-check
+      - pixi run audit-figures
+      - pixi run validate
+      - pixi run stage run <stage>
+      - pixi run reproduce
+      - pixi run provenance-check
+    r_tasks:
+      - pixi run check-r
+  qc:
+    entrypoint: pixi run python analysis/pipelines/run_qc.py
+  mmrm:
+    study_wrappers:
+      - pixi run python analysis/pipelines/run_mmrm.py --platform olink
+      - pixi run python analysis/pipelines/run_mmrm.py --platform soma
+  pathway:
+    entrypoint: pixi run python -m analysis.pathway
+  mediation:
+    study_wrappers:
+      - pixi run python analysis/pipelines/run_mediation.py --platform olink
+      - pixi run python analysis/pipelines/run_mediation.py --platform soma
+  pharmacogenomics:
+    entrypoints:
+      - pixi run python analysis/pipelines/run_wgs_pcs.py
+      - pixi run python analysis/pharmacogenomics/run.py
+
+figures:
+  # Mirrors figures/build_figures.py MAIN / EXTENDED / SUPP (keys = output stems, in
+  # registry order); publication_manifest.py check enforces the match.
+  main:
+    fig1_trajectory: pixi run python figures/fig1_trajectory.py
+    fig2_volcano: pixi run python figures/fig2_volcano.py
+    fig3_pathway: pixi run python figures/fig3_pathway.py
+    fig4_mediation: pixi run python figures/fig4_mediation.py
+    fig5_ppy: pixi run python figures/fig5_ppy.py
+  extended:
+    ed_fig1_study_design: pixi run python figures/supp_fig_study_design.py
+    ed_fig2_concordance: pixi run python figures/supp_fig_concordance.py
+    ed_fig3_biomarker_correlation: pixi run python figures/supp_fig_biomarker_correlation.py
+    ed_fig4_exocrine_pancreas: pixi run python figures/supp_fig_exocrine_pancreas.py --part lead
+    ed_fig5_cross_study: pixi run python figures/supp_fig_cross_study.py
+    ed_fig6_mediation_week24: pixi run python figures/supp_fig_mediation_week24.py
+    ed_fig7_gipr_glp1r_celltype: pixi run python figures/supp_fig_gipr_glp1r_celltype.py
+  supplementary:
+    supp_fig1_proteome_pca: pixi run python figures/supp_fig_proteome_pca.py
+    supp_fig2_tzp_induced: pixi run python figures/supp_fig_tzp_induced.py
+    supp_fig3_tzp_suppressed: pixi run python figures/supp_fig_tzp_suppressed.py
+    supp_fig4_exocrine_pancreas: pixi run python figures/supp_fig_exocrine_pancreas.py --part rest
+    supp_fig5_sema_greater: pixi run python figures/supp_fig_sema_greater.py
+    supp_fig6_tzp_opposing: pixi run python figures/supp_fig_tzp_opposing.py
+    supp_fig7_cross_study_pcbl: pixi run python figures/supp_fig_cross_study_pcbl.py
+    supp_fig8_pathway_ora: pixi run python figures/supp_fig_pathway_ora.py
+    supp_fig9_mediation_weight_mediated: pixi run python figures/supp_fig_mediation_weight_mediated.py
+    supp_fig10_mediation_heterogeneous: pixi run python figures/supp_fig_mediation_heterogeneous.py
+    supp_fig11_e354q: pixi run python figures/supp_fig_e354q.py
+
+figure_bundles:
+  all_figures:
+    purpose: render every registered figure and write the Main, Extended Data and Supplementary PDFs
+    command: pixi run python figures/build_figures.py --which all
+    # Files a figure script reads directly rather than as a stage output; the build's
+    # provenance record fingerprints them with the stage outputs it reads.
+    inputs:
+      - paths.yaml:pheno_root/adlb.parquet
+      - figures/configs/pathway_figure_terms.csv
+      - figures/configs/pathway_ora_figure_terms.csv
+    outputs:
+      - figures/main_figures.pdf
+      - figures/extended_data_figures.pdf
+      - figures/supplementary_figures.pdf
+
+tables:
+  supplementary_workbook:
+    purpose: build the 18-sheet supplementary tables workbook
+    command: pixi run python tables/build_all.py
+    # Files a table module reads directly rather than as a stage output.
+    inputs:
+      - paths.yaml:pheno_root/adlb.parquet
+      - paths.yaml:pheno_root/adsl.parquet
+      - figures/configs/pathway_figure_terms.csv
+      - figures/configs/pathway_ora_figure_terms.csv
+      - data/external/hgnc/hgnc_complete_set_2026-09-04.tsv
+      - data/external/hpa/proteinatlas.tsv.zip
+      - data/external/pqtl/raw/41588_2026_2697_MOESM4_ESM.xlsx
+    output: tables/supplementary_tables.xlsx
+    note: >-
+      Tables S1/S2 read HPA v25.1 bulk (CC BY 4.0; data available from v25.proteinatlas.org)
+      and the Genes & Health supplement (Pietzner et al. Nat Genet 2026, ST5/ST6; the pinned file of
+      analysis/external/pqtl_catalogs.py), both downloaded on first use and SHA-256 verified (HPA pin in
+      analysis/external/assay_table_annotations.py).
+      HGNC IDs resolve to HPA Ensembl IDs through the pinned HGNC complete set.
+
+validation:
+  pixi_env:
+    commands:
+      - pixi install --locked
+      - pixi run check-r
+    note: Installs the locked pixi environment (Python and R packages from pixi.lock).
+  command_index:
+    command: pixi run manifest-list
+    note: Lists reproducibility entrypoints without requiring trial data.
+  fast_validation:
+    command: pixi run validate
+    note: Runs the manifest consistency checks and the figure-style audit, then byte-compiles analysis, figures, tables and paths.py.
+  style_audit:
+    command: pixi run python analysis/tools/publication_manifest.py audit-figures
+  manifest_check:
+    command: pixi run python analysis/tools/publication_manifest.py check
+  figure_smoke:
+    note: Run individual figure commands above once the trial data are mounted.

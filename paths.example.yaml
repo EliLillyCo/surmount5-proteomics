@@ -1,0 +1,44 @@
+# Copy to paths.yaml and replace every <placeholder> with a local path.
+# Or keep the file elsewhere and set SURMOUNT5_PATHS_YAML=/absolute/path/to/paths.yaml.
+# mmrm_root, qc_root, and pheno_root are required for the main figure/table entrypoints.
+# geno_root and qa_root are needed by the genetics/QC utilities only.
+# mmrm_root is both where run_mmrm.py / run_mmrm_sex.py / run_mediation.py write and where every
+# figure and table reads; qc_root is where run_qc.py writes and the MMRM and tables read.
+mmrm_root: "<directory for the MMRM, pathway and mediation outputs>"
+qc_root: "<directory for the QC outputs>"
+pheno_root: "<directory of the ADaM parquets>"
+geno_root: "<directory of the genotype data>"
+qa_root: "<directory of the QA files>"
+# QC inputs (analysis/qc/config_{olink,soma}.toml read them through these keys).
+surmount5_olink_raw_key: "<Olink sample key CSV>"
+surmount5_olink_data: "<Olink NPX parquet>"
+surmount5_soma_raw_key: "<SomaLogic sample key CSV>"
+surmount5_soma_data: "<non-ANML ADAT>"
+surmount5_pheno_root: "<directory of the ADaM parquets>"
+surmount5_genotype_dir: "<directory of the PGEN and PVAR files>"
+surmount5_kinship_table: "<KING kinship parquet>"
+surmount5_ancestry_pcs: "<ancestry PCs TSV>"
+# Genetics file names (E354Q stage, QC pQTL step).
+# File-name pattern of the PGEN family whose PSAM IIDs are USUBJIDs; {chrom} is the chromosome.
+surmount5_pgen_pattern: "<PGEN prefix>.chr{chrom}"
+# File-name pattern of the PVAR family in surmount5_genotype_dir that the Fenland pQTL catalog's
+# allele check reads (stage qc_reference); {start}-{end} are a chunk's bounds.
+surmount5_fenland_pvar_pattern: "<PGEN prefix>.chr{chrom}_{start}-{end}"
+surmount5_chr19_pvcf: "<chr19 pVCF>"
+surmount5_pheno_geno_linking: "<DNA-ID to USUBJID linking CSV>"
+# Study tag in the QA tree's file names.
+surmount5_qa_file_stem: "<study tag of the QA file names>"
+# Per-tube QC corrections (TOML; a run with no corrections uses a file with no entries: an empty
+# file, or one holding only comments such as `# no entries`, with no `[[corrections]]` table).
+surmount5_olink_qc_corrections: "<Olink per-tube corrections TOML>"
+surmount5_soma_qc_corrections: "<SomaScan per-tube corrections TOML>"
+
+# Table S6A workbook; the manifest stage science_aeb2672_tableS6A reads it. SHA-256 pinned.
+science_aeb2672_xlsx: "<path>/science.aeb2672_tables_s1_to_s6.xlsx"
+
+# Fenland Science supplementary workbook (Pietzner et al. 2021); the manifest stage qc_reference reads it
+# (--fenland-xlsx). A browser download; SHA-256 pinned.
+fenland_science_xlsx: "<path>/science.abj1541_tables_s1_to_s9.xlsx"
+# SomaLogic SomaScan 11K v5.0 annotated menu (SL00000906 Rev 10); the manifest stage vendor_assay_tables
+# reads it (--menu). A download from menu.somalogic.com (SomaLogic account); SHA-256 pinned.
+somascan_menu_xlsx: "<path>/SL00000906_SomaScan_11K_v5.0_Plasma_Serum_Annotated_Menu.xlsx"

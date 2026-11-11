@@ -1,0 +1,19 @@
+theme_id,theme_name,display_label,original_term,database
+1,Adipose & endocrine hormones,Hormone activity,Hormone Activity (GO:0005179),GO_Molecular_Function_2025
+1,Adipose & endocrine hormones,Peptide hormone metabolism,Peptide Hormone Metabolism,Reactome_Pathways_2024
+1,Adipose & endocrine hormones,Leptin & adiponectin,Leptin And Adiponectin WP3934,WikiPathways_2024_Human
+1,Adipose & endocrine hormones,Adipocytes,Adipocyte Adipose Tissue Mouse,CellMarker_2024
+2,GH–IGF axis,IGF binding,Insulin-Like Growth Factor Binding (GO:0005520),GO_Molecular_Function_2025
+2,GH–IGF axis,IGFBP-mediated IGF transport,Regulation of IGF Transport and Uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs),Reactome_Pathways_2024
+2,GH–IGF axis,GH synthesis & action,"GROWTH HORMONE SYNTHESIS, SECRETION AND ACTION",KEGG_2026
+3,Liver-secreted proteins,Complement & coagulation cascades,Complement And Coagulation Cascades WP558,WikiPathways_2024_Human
+4,Pancreatic exocrine,Pancreatic secretion,PANCREATIC SECRETION,KEGG_2026
+4,Pancreatic exocrine,Pancreatic acinar cell,Acinar Cell Pancreatic Islet Human,CellMarker_2024
+5,Islet & neuroendocrine,Pancreatic endocrine cells,Endocrine Cell Pancreas Human,CellMarker_2024
+5,Islet & neuroendocrine,Enteroendocrine cell,Enteroendocrine Cell Intestinal Crypt Mouse,CellMarker_2024
+6,"Stromal, ECM & TGF-β",TGF-β binding,Transforming Growth Factor Beta Binding (GO:0050431),GO_Molecular_Function_2025
+6,"Stromal, ECM & TGF-β",ECM-receptor interaction,ECM-RECEPTOR INTERACTION,KEGG_2026
+6,"Stromal, ECM & TGF-β",Bone-marrow stromal cells,Mesenchymal Stromal Cell Bone Marrow Human,CellMarker_2024
+7,Neural guidance & synaptic adhesion,Plasma-membrane cell–cell adhesion,Cell-Cell Adhesion via Plasma-Membrane Adhesion Molecules (GO:0098742),GO_Biological_Process_2025
+7,Neural guidance & synaptic adhesion,Axonogenesis,Axonogenesis (GO:0007409),GO_Biological_Process_2025
+7,Neural guidance & synaptic adhesion,Synapse assembly,Positive Regulation of Synapse Assembly (GO:0051965),GO_Biological_Process_2025

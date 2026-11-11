@@ -1,0 +1,65 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.pixi/
+
+# Machine-specific path config: copy paths.example.yaml to paths.yaml or set SURMOUNT5_PATHS_YAML.
+paths.yaml
+
+# Data files (clinical trial data — do not commit)
+*.parquet
+*.csv
+*.tsv
+*.xlsx
+# Allow hand-curated figure config CSVs (not data)
+!figures/configs/*.csv
+# Allow the tracked UniProt gene-update layer of the assay annotation
+!analysis/reference/assay_gene_updates.tsv
+# Allow the tracked Reactome member corrections, applied when the gene sets load
+!analysis/reference/gene_set_corrections.tsv
+
+# QC reports
+*.html
+
+# Analysis cache/outputs
+analysis/outputs/*
+
+# Hormone Cell Atlas h5ads — large (~1 GB), regenerable via curl from
+# https://cellgeni.cog.sanger.ac.uk/hormonecellatlas/download/
+data/external/hormone_atlas/
+
+# Rendered PDFs (regenerable from .py scripts)
+*.pdf
+
+# QC reference inputs staged by analysis/external/qc_reference.py (third-party; not tracked)
+analysis/qc/data/
+data/external/qc_reference/
+data/external/pqtl/
+
+# Assay annotation, Ensembl cross-references and vendor-derived tables written by analysis/external/
+# (not tracked).
+data/external/vendor_assay_tables/
+data/external/ensembl/
+# Ensembl GRCh37-to-GRCh38 chain and variation indexes, fetched by analysis/external/liftover.py (not tracked).
+data/external/ensembl_mapping/
+
+# HPA pan-disease blood atlas download, fetched and checksum-verified by
+# analysis/external/hpa_disease_atlas.py (third-party; not tracked)
+data/external/hpa/
+# Pinned public releases fetched by the stages (HGNC complete set: vendor_assay_tables; HCOP: hcop); never
+# tracked, nor the tables derived from them (the alias table sits in vendor_assay_tables/).
+data/external/hgnc/
+data/external/hcop/
+# Enrichr gene-set libraries, fetched and checksum-verified by analysis/external/gene_sets.py (stage gene_sets).
+data/external/gene_sets/*
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/

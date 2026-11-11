@@ -1,0 +1,7 @@
+# Tool configuration and project metadata only. The packages and their pins live in
+# pixi.toml.
+[project]
+name = "surmount5-proteomics"
+version = "0.1.0"
+description = "Dual-platform (Olink + SomaScan) proteomic analysis of tirzepatide vs semaglutide effects on the obesity proteome (SURMOUNT-5)."
+requires-python = ">=3.13,<3.14"
