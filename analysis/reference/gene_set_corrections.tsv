@@ -1,0 +1,3 @@
+library	term	from_symbol	to_symbol	reason
+Reactome_Pathways_2024	Extrinsic Pathway of Fibrin Clot Formation	TF	F3	TF replaced by F3 (tissue factor, P13726); TF in HGNC is transferrin (P02787)
+Reactome_Pathways_2024	Formation of Fibrin Clot (Clotting Cascade)	TF	F3	TF replaced by F3 (tissue factor, P13726); TF in HGNC is transferrin (P02787)

@@ -1,0 +1,22 @@
+theme_id,theme_name,display_label,original_term,database
+1,Leptin & GH–IGF hormones,Peptide hormone metabolism,Peptide Hormone Metabolism,Reactome_Pathways_2024
+1,Leptin & GH–IGF hormones,IGFBP-mediated IGF transport,Regulation of IGF Transport and Uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs),Reactome_Pathways_2024
+2,Liver-secreted proteins,Complement cascade,Complement Cascade,Reactome_Pathways_2024
+2,Liver-secreted proteins,Blood clotting cascade,Blood Clotting Cascade WP272,WikiPathways_2024_Human
+2,Liver-secreted proteins,Acute-phase response,Acute-Phase Response (GO:0006953),GO_Biological_Process_2025
+2,Liver-secreted proteins,Scavenging by class B receptors,Scavenging by Class B Receptors,Reactome_Pathways_2024
+3,Pancreatic exocrine,Pancreatic acinar cells,Acinar Cell Pancreatic Islet Human,CellMarker_2024
+3,Pancreatic exocrine,Protein digestion & absorption,PROTEIN DIGESTION AND ABSORPTION,KEGG_2026
+3,Pancreatic exocrine,Dietary lipid digestion,Digestion of Dietary Lipid,Reactome_Pathways_2024
+4,Stromal & perivascular,Mural cells,Mural Cell Undefined Mouse,CellMarker_2024
+4,Stromal & perivascular,Pericytes,Pericyte Kidney Mouse,CellMarker_2024
+4,Stromal & perivascular,Tie2 signaling,Tie2 Signaling,Reactome_Pathways_2024
+4,Stromal & perivascular,Skeletal stem/progenitor cells,Skeletal Stem And Progenitor Cell (SSPC) Cartilage Mouse,CellMarker_2024
+4,Stromal & perivascular,TGF-β binding,Transforming Growth Factor Beta Binding (GO:0050431),GO_Molecular_Function_2025
+4,Stromal & perivascular,TGF-β–SMAD signaling,TGFB Smad Signaling WP5382,WikiPathways_2024_Human
+5,"Neural guidance, synapse & glia",Receptor-type protein phosphatases,Receptor-type Tyrosine-Protein Phosphatases,Reactome_Pathways_2024
+5,"Neural guidance, synapse & glia",IGSF CAM signaling,IGSF CAM SIGNALING,KEGG_2026
+5,"Neural guidance, synapse & glia",L1CAM interactions,L1CAM Interactions,Reactome_Pathways_2024
+5,"Neural guidance, synapse & glia",Semaphorin interactions,Semaphorin Interactions,Reactome_Pathways_2024
+5,"Neural guidance, synapse & glia",Oligodendrocyte progenitors,Oligodendrocyte Progenitor Cell Brain Human,CellMarker_2024
+6,Immune cells,Lymphoid cells,Lymphoid Cell Undefined Human,CellMarker_2024

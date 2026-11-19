@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# Install the Inter font the figures use into the pixi environment's matplotlib font directory,
+# then verify that a fresh matplotlib font scan resolves it. Nothing outside the environment is
+# written: the verification runs with a temporary matplotlib config and cache directory.
+# Run once after `pixi install`, and again after every `pixi install` (the environment's
+# font directory is wiped on reinstall).
+set -euo pipefail
+
+INTER_VERSION="4.0"
+ZIP_URL="https://github.com/rsms/inter/releases/download/v${INTER_VERSION}/Inter-${INTER_VERSION}.zip"
+# sha256 of the v4.0 release archive; a changed digest means a different font build.
+ZIP_SHA256="ff970a5d4561a04f102a7cb781adbd6ac4e9b6c460914c7a101f15acb7f7d1a4"
+TMP_DIR="$(mktemp -d)"
+trap 'rm -rf "$TMP_DIR"' EXIT
+# matplotlib writes its font cache under MPLCONFIGDIR; keep it in the temporary directory.
+export MPLCONFIGDIR="$TMP_DIR/mplconfig"
+
+echo "Downloading Inter v${INTER_VERSION}..."
+curl -fsSL "$ZIP_URL" -o "$TMP_DIR/inter.zip"
+echo "${ZIP_SHA256}  $TMP_DIR/inter.zip" | sha256sum -c -
+
+VARIANTS=(Regular Bold Italic BoldItalic Medium SemiBold Light)
+# Extract with the environment's Python, so no system unzip is needed.
+python - "$TMP_DIR" "${VARIANTS[@]}" <<'PY'
+import sys, zipfile
+from pathlib import Path
+
+tmp, variants = Path(sys.argv[1]), sys.argv[2:]
+with zipfile.ZipFile(tmp / "inter.zip") as archive:
+    for variant in variants:
+        member = f"extras/ttf/Inter-{variant}.ttf"
+        (tmp / f"Inter-{variant}.ttf").write_bytes(archive.read(member))
+PY
+
+MPL_FONTS="$(python -c 'import matplotlib, pathlib; print(pathlib.Path(matplotlib.get_data_path()) / "fonts" / "ttf")')"
+
+for variant in "${VARIANTS[@]}"; do
+    cp "$TMP_DIR/Inter-${variant}.ttf" "$MPL_FONTS/"
+done
+
+echo "Inter v${INTER_VERSION} installed to:"
+echo "  $MPL_FONTS"
+
+# Verify that a fresh font scan (no cache read or written) resolves Inter from that directory.
+python - "$MPL_FONTS" <<'PY'
+import sys
+from pathlib import Path
+
+import matplotlib.font_manager as fm
+
+fp = fm.FontManager().findfont(fm.FontProperties(family="Inter"), fallback_to_default=False)
+assert Path(fp).resolve().parent == Path(sys.argv[1]).resolve(), f"Inter not resolved from {sys.argv[1]}, got {fp}"
+print(f"  verified: {fp}")
+PY

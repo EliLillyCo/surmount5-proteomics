@@ -1,0 +1,55 @@
+# SomaScan QC configuration of the SURMOUNT-5 SomaScan run (analysis/qc/study.py reads it).
+#
+# A value "paths:{study}_<name>" is the paths config key of that name for the run
+# ({study} becomes surmount5_soma); "paths:{trial}_<name>" is a key both platform runs
+# share ({trial} becomes surmount5). Tables other than [steps] are the trial config the
+# QC library reads (analysis/qc/config.py, TrialConfig); [steps] holds the options each
+# QC step is called with (analysis/qc/driver.py).
+#
+# The QC reads the non-ANML RFU.
+
+platform = "soma"
+corrections = "paths:{study}_qc_corrections"
+
+[visits]
+baseline = 2
+analysis = [2, 8, 20]
+screening = [1]
+
+[clinical]
+window_stop_events = ["PROHMSDT", "BARIDT", "NSDSDT", "NSDTDT"]
+
+[pqtl]
+enabled = true
+weight_exponent = 0.0
+# The eight SomaScan cis catalogs (ckb_soma is the 2026 CKB Atlas).
+reference_catalog = ["decode", "aric", "fenland_hg38", "ckb_soma", "mesa_soma", "gh_soma", "ages", "interval"]
+genotype_dir = "paths:{trial}_genotype_dir"
+pgen_pattern = "paths:{trial}_pgen_pattern"
+kinship_table = "paths:{trial}_kinship_table"
+ancestry_pcs = "paths:{trial}_ancestry_pcs"
+
+[manifest]
+raw_key = "paths:{study}_raw_key"
+adsl = "paths:{trial}_pheno_root/adsl.parquet"
+adlb = "paths:{trial}_pheno_root/adlb.parquet"
+advs = "paths:{trial}_pheno_root/advs.parquet"
+
+[manifest.columns]
+sample_id = "Tube Barcode"
+subject = "Patient ID"
+date = "Date Collected"
+accession = "Accession #"
+sample_type = "Sample Type"
+bridge_flag = "Deidentified Donor ID"
+
+[steps]
+clinical_vars = ["AGE", "SEX", "TRT01A", "COUNTRY", "SITEID", "RACE"]
+force_categorical = ["SITEID", "VISITNUM"]
+group_col = ["TRT01A"]
+sex_col = "SEX"
+age_col = "VISITAGE"
+age_threshold = 15.0
+age_std_threshold = 5.5
+sample_date_col = "ADT"
+random_seed = 0
