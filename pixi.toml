@@ -1,0 +1,128 @@
+[workspace]
+name = "surmount5-proteomics"
+version = "0.1.0"
+description = "Standalone manuscript environment for the SURMOUNT-5 proteomics paper"
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+# One environment. Every dependency is pinned to the version pixi.lock resolves. Everything comes from
+# conda-forge and bioconda except somadata, the one PyPI package (see [pypi-dependencies]).
+[dependencies]
+python = "3.13.13.*"
+# Python packages. scikit-learn is pinned exactly (the QC models); the rest use patch-level
+# pins.
+scikit-learn = "==1.8.0"
+numpy = "2.4.4.*"
+scipy = "1.17.1.*"
+pandas = "3.0.2.*"
+pyarrow = "24.0.0.*"
+# polars with the no-AVX2 runtime, for CPUs without AVX2.
+polars = "1.40.1.*"
+polars-runtime-compat = "1.40.1.*"
+statsmodels = "0.14.6.*"
+threadpoolctl = "3.6.0.*"
+# matplotlib-base, not the matplotlib metapackage, which pulls in Qt.
+matplotlib-base = "3.10.9.*"
+# Build pins keep the shared system libraries (libfreetype, libbrotli*) at the builds the R
+# packages were resolved against.
+freetype = { version = "2.14.3.*", build = "*_0" }
+brotli-python = { version = "1.2.0.*", build = "*_1" }
+pillow = "12.3.0.*"
+adjusttext = "1.3.0.*"
+gseapy = "1.2.1.*"
+openpyxl = "3.1.5.*"
+pypdf = "6.21.1.*"
+pyyaml = "6.0.3.*"
+requests = "2.33.1.*"
+tqdm = "4.67.3.*"
+# Reads the trial VCF for the E354Q pharmacogenomics step; from bioconda.
+pysam = "0.24.0.*"
+rpy2 = "3.6.7.*"
+# Only analysis/external/recompute_hormone_atlas_pancreas.py, which rebuilds the hormone-atlas
+# parquet from the published h5ad.
+anndata = "0.13.4.*"
+# Test runner.
+pytest = "9.0.3.*"
+r-base = "4.5.3.*"
+compilers = "1.11.0.*"
+make = "4.4.1.*"
+pkg-config = "0.29.2.*"
+libuv = "1.52.1.*"
+plink2 = "2.0.0a.6.9.*"
+r-mmrm = "0.3.19.*"
+r-lme4 = "2.0_1.*"
+r-arrow = "24.0.0.*"
+pgenlib = "0.95.1.*"
+r-emmeans = "2.0.3.*"
+r-mediation = "4.5.1.*"
+bioconductor-limma = "3.66.0.*"
+bioconductor-gdsfmt = "1.46.0.*"
+bioconductor-snprelate = "1.44.0.*"
+liblzma-devel = ">=5.8.3,<6"
+
+# The one PyPI exception. somadata (SomaLogic's ADAT reader, analysis/qc/core.py) is on
+# neither conda-forge nor bioconda. It is pure Python, and its own dependencies (numpy, pandas,
+# openpyxl) resolve from conda above.
+[pypi-dependencies]
+somadata = "==1.2.5"
+
+[target.linux-64.activation.env]
+R_HOME = "$CONDA_PREFIX/lib/R"
+R_LIBS = "$CONDA_PREFIX/lib/R/library"
+R_LIBS_USER = "$CONDA_PREFIX/lib/R/library"
+# `analysis`, `figures`, `tables` and `paths` import from any working directory, so the entry-point
+# scripts run as `python path/to/script.py` without a sys.path edit.
+PYTHONPATH = "$PIXI_PROJECT_ROOT"
+
+[tasks]
+check-r = '''
+Rscript -e '
+expected <- c(
+  mmrm = "0.3.19",
+  emmeans = "2.0.3",
+  mediation = "4.5.1",
+  limma = "3.66.0",
+  gdsfmt = "1.46.0",
+  SNPRelate = "1.44.0",
+  lme4 = "2.0-1",
+  arrow = "24.0.0"
+)
+installed <- installed.packages()
+missing <- names(expected)[!names(expected) %in% rownames(installed)]
+if (length(missing)) {
+  stop(sprintf("Missing R packages: %s", paste(missing, collapse = ", ")))
+}
+bad <- names(expected)[vapply(
+  names(expected),
+  function(pkg) installed[pkg, "Version"] != expected[[pkg]],
+  logical(1)
+)]
+if (length(bad)) {
+  stop(sprintf(
+    "R package version mismatch: %s",
+    paste(sprintf("%s=%s (expected %s)", bad, installed[bad, "Version"], expected[bad]), collapse = "; ")
+  ))
+}
+cat("R packages OK\\n")
+'
+'''
+manifest-list = "python analysis/tools/publication_manifest.py list"
+manifest-check = "python analysis/tools/publication_manifest.py check"
+audit-figures = "python analysis/tools/publication_manifest.py audit-figures"
+# ruff (unused, redefined and undefined names, bare and blind excepts) and vulture (unused imports,
+# unreachable code and unused arguments, outside the tests) in a temporary pinned environment
+# (`pixi exec`); the first run downloads the two packages, later runs use the pixi cache.
+lint = { cmd = "pixi exec --spec ruff==0.17.1 -- ruff check --no-cache --select F401,F811,F841,F821,E722,BLE001 analysis figures tables scripts paths.py && pixi exec --spec vulture==2.16 -- vulture analysis figures tables scripts paths.py --min-confidence 90 --exclude '*/tests/*,*/conftest.py'", description = "ruff and vulture dead-code checks (pinned, through pixi exec; not part of validate)" }
+validate = "python analysis/tools/publication_manifest.py check && python analysis/tools/publication_manifest.py audit-figures && python -m compileall -q analysis figures tables paths.py"
+# Installs the Inter font (SHA-256 pinned) into the environment's matplotlib font directory; the
+# figures raise without it. Rerun after every `pixi install`.
+setup-fonts = "./scripts/setup-fonts"
+build-figures = "python figures/build_figures.py --which all"
+build-tables = "python tables/build_all.py"
+# Stage runner and provenance (analysis/tools/run_stage.py, analysis/tools/provenance.py): each
+# stage writes analysis/outputs/provenance/<stage>.json. `reproduce` skips a stage whose record
+# and outputs exist and whose recorded inputs still hash the same; figures and tables always rebuild.
+stage = "python analysis/tools/run_stage.py"
+reproduce = "python analysis/tools/run_stage.py all"
+paper = "python analysis/tools/run_stage.py run figures tables"
+provenance-check = "python analysis/tools/provenance_check.py"

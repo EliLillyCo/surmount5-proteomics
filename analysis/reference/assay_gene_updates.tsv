@@ -1,0 +1,481 @@
+platform	assay_id	vendor_accession	accession	vendor_gene	updated_gene	reason	uniprot_release
+olink	OID40006	Q8IZF7	Q8IZF7	ADGRF2	ADGRF2P	rename	2026_03
+olink	OID40073	Q8N769	Q8N769	C14orf178	SLIRP-OT1	rename	2026_03
+olink	OID40078	Q53S99	Q53S99	C2orf83	SLC19A4P	rename	2026_03
+olink	OID40081	Q5VYM1	Q5VYM1	C9orf131	SPATA31G1	rename	2026_03
+olink	OID40162	Q5HYR2	Q5HYR2	DMRTC1	DMRTC1|DMRTC1B	paralog accession: every HGNC-linked gene	2026_03
+olink	OID40214	P0DMU3	P0DMU3	F231L	F231L	review: UniProt has no gene name, vendor gene kept	2026_03
+olink	OID40219	Q6J272	Q6J272	FAM166A	CIMIP2A	rename	2026_03
+olink	OID40230	Q9BQN1	Q9BQN1	FAM83C	SACK1C	rename	2026_03
+olink	OID40247	Q96M66	Q96M66	YP010	YP010	review: UniProt has no gene name, vendor gene kept	2026_03
+olink	OID40262	O95995	O95995	GAS8	DRC4	rename	2026_03
+olink	OID40271	A6NEF3	A6NEF3	GOLGA6L4	GOLGA6L4	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID40271	A6NEM1	A6NEM1	GOLGA6L9	GOLGA6L9	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID40271	A6NI86	A6NI86	GOLGA6L10	GOLGA6L10	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID40313	Q86XH1	Q86XH1	IQCA1	DRC11	rename	2026_03
+olink	OID40314	A6NCM1	A6NCM1	IQCA1L	DRC11L	rename	2026_03
+olink	OID40339	Q5HYC2	Q5HYC2	KIAA2026	BRD10	rename	2026_03
+olink	OID40356	A5PL33	A5PL33	KRBA1	KRABD3	rename	2026_03
+olink	OID40387	Q96JG8	Q96JG8	MAGED4	MAGED4|MAGED4B	paralog accession: every HGNC-linked gene	2026_03
+olink	OID40440	Q8IYB0	Q8IYB0	YK038	YK038	review: UniProt has no gene name, vendor gene kept	2026_03
+olink	OID40520	Q7Z5V6	Q7Z5V6	PPP1R32	SAXO4	rename	2026_03
+olink	OID40529	Q96S07	Q96S07	PRR25	PRR25	review: accession not in this UniProt release, vendor gene kept	2026_03
+olink	OID40565	A6NJZ7	A6NJZ7	RIMBP3C	RIMBP3C	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID40565	Q9UFD9	Q9UFD9	RIMBP3	RIMBP3	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID40656	Q96LM6	Q96LM6	TEX37	SPMIP9	rename	2026_03
+olink	OID40667	Q9C0C2	Q9C0C2	TNKS1BP1	CNOT12	rename	2026_03
+olink	OID40673	Q8TDR0	Q8TDR0	TRAF3IP1	IFT54	rename	2026_03
+olink	OID40740	P52739	P52739	ZNF131	ZBTB35	rename	2026_03
+olink	OID40772	Q5VTM2	Q5VTM2	AGAP9	AGAP9	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID40772	Q96P64	Q96P64	AGAP4	AGAP4	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID40882	Q86WS4	Q86WS4	C12orf40	REDIC1	rename	2026_03
+olink	OID40891	Q8NDD1	Q8NDD1	C1orf131	FSAF1	rename	2026_03
+olink	OID40895	Q68DN1	Q68DN1	C2orf16	SPATA31H1	rename	2026_03
+olink	OID40897	Q8N5S3	Q8N5S3	C2orf73	CIMIP6	rename	2026_03
+olink	OID40904	A7E2U8	A7E2U8	C4orf47	CFAP96	rename	2026_03
+olink	OID40943	Q8NDH2	Q8NDH2	CCDC168	LRTM3	rename	2026_03
+olink	OID40953	Q8IXS2	Q8IXS2	CCDC65	DRC2	rename	2026_03
+olink	OID40984	Q9Y6F8	Q9Y6F8	CDY1	CDY1|CDY1B	paralog accession: every HGNC-linked gene	2026_03
+olink	OID40987	Q711Q0	Q711Q0	CEFIP	C10orf71	rename	2026_03
+olink	OID41034	Q96AJ1	Q96AJ1	CLUAP1	IFT38	rename	2026_03
+olink	OID41070	A8MYA2	A8MYA2	CXorf49	CXorf49|CXorf49B	paralog accession: every HGNC-linked gene	2026_03
+olink	OID41182	Q5XKR9	Q5XKR9	FAM104B	VCF2	rename	2026_03
+olink	OID41196	Q5T0W9	Q5T0W9	FAM83B	SACK1B	rename	2026_03
+olink	OID41289	P63121	P63121	HERVK-113|VP113	HERVK-113	review: distinct proteins would share one gene, vendor gene kept	2026_03
+olink	OID41336	Q96DY2	Q96DY2	IQCD	DRC10	rename	2026_03
+olink	OID41338	Q9H095	Q9H095	IQCG	DRC9	rename	2026_03
+olink	OID41443	P43362	P43362	MAGEA9	MAGEA9|MAGEA9B	paralog accession: every HGNC-linked gene	2026_03
+olink	OID41514	B2RBV5	B2RBV5	MR1L2	MRFAP1L2	vendor code replaced	2026_03
+olink	OID41515	A8MT66	A8MT66	YU005	YU005	review: UniProt has no gene name, vendor gene kept	2026_03
+olink	OID41516	Q6ZSR3	Q6ZSR3	YO027	YO027	review: UniProt has no gene name, vendor gene kept	2026_03
+olink	OID41517	Q6ZRN7	Q6ZRN7	YP029	YP029	review: UniProt has no gene name, vendor gene kept	2026_03
+olink	OID41518	A8MUA0	A8MUA0	YB057	YB057	multi-target: paired by position, UniProt confirms; review: UniProt has no gene name, vendor gene kept	2026_03
+olink	OID41518	A8MX80	A8MX80	YM017	YM017	multi-target: paired by position, UniProt confirms; review: UniProt has no gene name, vendor gene kept	2026_03
+olink	OID41527	A8MVU1	A8MVU1	NCF1C	NCF1C	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID41527	P14598	P14598	NCF1	NCF1	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID41535	Q9NRX3	Q9NRX3	NDUFA4L2	COXFA4L2	rename	2026_03
+olink	OID41966	P0CV98	P0CV98	TSPY3	TSPY3	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID41966	P0CW01	P0CW01	TSPY10	TSPY10	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID41980	Q6F5E7	Q6F5E7	TXNRD3NB	TXNRD3	rename	2026_03
+olink	OID42204	Q8N865	Q8N865	C7orf31	SPMIP4	rename	2026_03
+olink	OID42268	Q9HC77	Q9HC77	CENPJ	CPAP	rename	2026_03
+olink	OID42396	Q5VUJ9	Q5VUJ9	EFCAB2	DRC8	rename	2026_03
+olink	OID42442	Q8NEG4	Q8NEG4	FAM83F	SACK1F	rename	2026_03
+olink	OID42470	Q8N7P7	Q8N7P7	YH007	YH007	review: UniProt has no gene name, vendor gene kept	2026_03
+olink	OID42557	P62684	P62684	HERVK-113|GA113	HERVK-113	review: distinct proteins would share one gene, vendor gene kept	2026_03
+olink	OID42725	P43357	P43357	MAGEA3	MAGEA3	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID42725	P43360	P43360	MAGEA6	MAGEA6	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID42746	Q8TC05	Q8TC05	MDM1	SAXO6	rename	2026_03
+olink	OID43118	Q96QH8	Q96QH8	SPACA5	SPACA5|SPACA5B	paralog accession: every HGNC-linked gene	2026_03
+olink	OID43168	P13385	P13385	TDGF1	CRIPTO	rename	2026_03
+olink	OID43178	O43247	O43247	TEX33	CIMIP4	rename	2026_03
+olink	OID43186	P0DJG4	P0DJG4	THEGL	SPMAP2L	rename	2026_03
+olink	OID43351	Q9Y2D5	Q9Y2D5	AKAP2	AKAP2	review: HGNC complex locus constituent symbol kept, UniProt merged the entry into PALM2AKAP2	2026_03
+olink	OID43366	O43423	O43423	ANP32C	ANP32CP	rename	2026_03
+olink	OID43407	Q8IXM2	Q8IXM2	BAP18	BACC1	rename	2026_03
+olink	OID43421	Q9H3K6	Q9H3K6	BOLA2	BOLA2|BOLA2B	paralog accession: every HGNC-linked gene	2026_03
+olink	OID43436	Q9BRJ6	Q9BRJ6	C7orf50	CHLSN	rename	2026_03
+olink	OID43646	Q14213	Q14213	EBI3	EBI3	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID43646	Q8NEV9	Q8NEV9	IL27	IL27	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID43699	Q8WUF8	Q8WUF8	FAM172A	ARB2A	rename	2026_03
+olink	OID43842	P29459	P29459	IL12A	IL12A	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID43842	P29460	P29460	IL12B	IL12B	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID43894	P43627	P43627	KIR2DL2	KIR2DL2	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID43894	P43628	P43628	KIR2DL3	KIR2DL3	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID43922	P47929	P47929	LGALS7	LGALS7|LGALS7B	paralog accession: every HGNC-linked gene	2026_03
+olink	OID43972	Q29980	Q29980	MICB	MICB	multi-target: matched through UniProt	2026_03
+olink	OID43972	Q29983	Q29983	MICA	MICA	multi-target: matched through UniProt	2026_03
+olink	OID44072	Q8IXS6	Q8IXS6	PALM2	PALM2	review: HGNC complex locus constituent symbol kept, UniProt merged the entry into PALM2AKAP2	2026_03
+olink	OID44377	Q5VY80	Q5VY80	RAET1L	RAET1L	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID44377	Q9BZM5	Q9BZM5	ULBP2	ULBP2	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID44487	Q9BSF0	Q9BSF0	C2orf88	AKAP19	rename	2026_03
+olink	OID44667	P21217	P21217	FUT3	FUT3	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID44667	Q11128	Q11128	FUT5	FUT5	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID44722	P01308	P01308	INS-CPEPTIDE	INS	analyte label: INS-CPEPTIDE is the assay label, the gene is UniProt's	2026_03
+olink	OID44745	Q6P5S2	Q6P5S2	LEG1	C6orf58	rename	2026_03
+olink	OID44775	Q9BUN1	Q9BUN1	MENT	C1orf56	rename	2026_03
+olink	OID44822	NT-proBNP	P16860	NT-proBNP	NPPB	analyte label: NT-proBNP is the assay label, the gene is UniProt's; accession filled: the list gives the analyte name NT-proBNP; the accession is P16860 (NPPB)	2026_03
+olink	OID44906	Q9BW04	Q9BW04	SARG	C1orf116	rename	2026_03
+olink	OID45161	Q9GZP8	Q9GZP8	IMUP	C19orf33	rename	2026_03
+olink	OID45304	P04746	P04746	AMY2	AMY2A	multi-target: matched through UniProt; rename	2026_03
+olink	OID45304	P0DTE7	P0DTE7	AMY1	AMY1B	multi-target: matched through UniProt; rename	2026_03
+olink	OID45304	P0DTE8	P0DTE8	AMY1	AMY1C	multi-target: matched through UniProt; rename	2026_03
+olink	OID45304	P0DUB6	P0DUB6	AMY1	AMY1A	multi-target: matched through UniProt; rename	2026_03
+olink	OID45304	P19961	P19961		AMY2B	multi-target: no vendor gene names this target, its gene symbol	2026_03
+olink	OID45350	P59665	P59665	DEFA1	DEFA1|DEFA1B	paralog accession: every HGNC-linked gene	2026_03
+olink	OID45359	O75015	O75015	FCGR3B	FCGR3B	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID45359	P08637	P08637	FCGR3A	FCGR3A	multi-target: paired by position, UniProt confirms	2026_03
+olink	OID45446	P0C0L5	P0C0L5	C4B	C4B|C4B_2	paralog accession: every HGNC-linked gene	2026_03
+soma	10365-132	P29460	P29460	IL12B	IL12B	multi-target: paired by position, UniProt confirms	2026_03
+soma	10365-132	Q9NPF7	Q9NPF7	IL23A	IL23A	multi-target: paired by position, UniProt confirms	2026_03
+soma	10367-62	P29459	P29459	IL12A	IL12A	multi-target: paired by position, UniProt confirms	2026_03
+soma	10367-62	P29460	P29460	IL12B	IL12B	multi-target: paired by position, UniProt confirms	2026_03
+soma	11089-7	P01877	P01877	IGHA2	IGHA2	multi-target: paired by position, UniProt confirms	2026_03
+soma	11089-7	P01876	P01876	IGHA1	IGHA1	multi-target: paired by position, UniProt confirms	2026_03
+soma	11096-57	Q9Y5N5	Q9Y5N5	N6AMT1	HEMK2	rename	2026_03
+soma	12382-2	O95786	O95786	DDX58	RIGI	rename	2026_03
+soma	13103-125	P0DML2	P0DML2	CSH1	CSH1	multi-target: paired by position, UniProt confirms	2026_03
+soma	13103-125	P0DML3	P0DML3	CSH2	CSH2	multi-target: paired by position, UniProt confirms	2026_03
+soma	13397-88	O15263	O15263	DEFB4A	DEFB4A|DEFB4B	paralog accession: every HGNC-linked gene	2026_03
+soma	13464-8	Q8N912	Q8N912	NRAC	C14orf180	rename	2026_03
+soma	14144-3	Q7L7L0	Q7L7L0	H2AW	H2AC25	rename	2026_03
+soma	14146-92	P68431	P68431	H3C1	H3C1|H3C10|H3C11|H3C12|H3C2|H3C3|H3C4|H3C6|H3C7|H3C8	paralog accession: every HGNC-linked gene	2026_03
+soma	14593-152	Q96ND0	Q96ND0	FAM210A	MIMS1	rename	2026_03
+soma	15542-19	P12532	P12532	CKMT1A	CKMT1A|CKMT1B	paralog accession: every HGNC-linked gene	2026_03
+soma	16927-9	P05160	P05160	F13B	F13B	multi-target: paired by position, UniProt confirms	2026_03
+soma	16927-9	P00488	P00488	F13A1	F13A1	multi-target: paired by position, UniProt confirms	2026_03
+soma	17145-1	P06702	P06702	S100A9	S100A9	multi-target: paired by position, UniProt confirms	2026_03
+soma	17145-1	P05109	P05109	S100A8	S100A8	multi-target: paired by position, UniProt confirms	2026_03
+soma	18192-69	P43359	P43359	MAGEA5	MAGEA5P	rename	2026_03
+soma	18267-74	Q5XLA6	Q5XLA6	CARD17	CARD17P	rename	2026_03
+soma	18273-14	Q9UEU5	Q9UEU5	GAGE2D	GAGE2D|GAGE8	paralog accession: every HGNC-linked gene	2026_03
+soma	18331-3	P04062	P04062	GBA	GBA1	rename	2026_03
+soma	18347-15	P07942	P07942	LAMB1	LAMB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	18347-15	P11047	P11047	LAMC1	LAMC1	multi-target: paired by position, UniProt confirms	2026_03
+soma	18347-15	P24043	P24043	LAMA2	LAMA2	multi-target: paired by position, UniProt confirms	2026_03
+soma	18389-11	P01562	P01562	IFNA1	IFNA1|IFNA13	paralog accession: every HGNC-linked gene	2026_03
+soma	18814-21	P08476	P08476	INHBA	INHBA	multi-target: paired by position, UniProt confirms	2026_03
+soma	18814-21	P55103	P55103	INHBC	INHBC	multi-target: paired by position, UniProt confirms	2026_03
+soma	18821-9	P0C0L5	P0C0L5	C4B	C4B|C4B_2	multi-target: paired by position, UniProt confirms; paralog accession: every HGNC-linked gene	2026_03
+soma	18821-9	P0C0L4	P0C0L4	C4A	C4A	multi-target: paired by position, UniProt confirms	2026_03
+soma	18823-52	Q8N257	Q8N257	H2BU1	H2BC26	rename	2026_03
+soma	19574-5	P05106	P05106	ITGB3	ITGB3	multi-target: paired by position, UniProt confirms	2026_03
+soma	19574-5	P08514	P08514	ITGA2B	ITGA2B	multi-target: paired by position, UniProt confirms	2026_03
+soma	19579-5	P59665	P59665	DEFA1	DEFA1|DEFA1B	paralog accession: every HGNC-linked gene	2026_03
+soma	20187-10	P05106	P05106	ITGB3	ITGB3	multi-target: paired by position, UniProt confirms	2026_03
+soma	20187-10	P06756	P06756	ITGAV	ITGAV	multi-target: paired by position, UniProt confirms	2026_03
+soma	20189-28	P06756	P06756	ITGAV	ITGAV	multi-target: paired by position, UniProt confirms	2026_03
+soma	20189-28	P18564	P18564	ITGB6	ITGB6	multi-target: paired by position, UniProt confirms	2026_03
+soma	20189-4	P18564	P18564	ITGB6	ITGB6	multi-target: paired by position, UniProt confirms	2026_03
+soma	20189-4	P06756	P06756	ITGAV	ITGAV	multi-target: paired by position, UniProt confirms	2026_03
+soma	20191-13	P06756	P06756	ITGAV	ITGAV	multi-target: paired by position, UniProt confirms	2026_03
+soma	20191-13	P26012	P26012	ITGB8	ITGB8	multi-target: paired by position, UniProt confirms	2026_03
+soma	20215-45	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	20215-45	P06756	P06756	ITGAV	ITGAV	multi-target: paired by position, UniProt confirms	2026_03
+soma	20533-39	P29459	P29459	IL12A	IL12A	multi-target: paired by position, UniProt confirms	2026_03
+soma	20533-39	Q14213	Q14213	EBI3	EBI3	multi-target: paired by position, UniProt confirms	2026_03
+soma	21153-5	Q8IXM2	Q8IXM2	BAP18	BACC1	rename	2026_03
+soma	21361-8	Q6F5E7	Q6F5E7	TXNRD3NB	TXNRD3	rename	2026_03
+soma	21391-17	P0DN86	P0DN86	CGB3	CGB3|CGB5|CGB8	paralog accession: every HGNC-linked gene	2026_03
+soma	21688-50	P13612	P13612	ITGA4	ITGA4	multi-target: paired by position, UniProt confirms	2026_03
+soma	21688-50	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21692-12	P10966	P10966	CD8B	CD8B	multi-target: paired by position, UniProt confirms	2026_03
+soma	21692-12	P01732	P01732	CD8A	CD8A	multi-target: paired by position, UniProt confirms	2026_03
+soma	21697-57	Q8IZF7	Q8IZF7	ADGRF2	ADGRF2P	rename	2026_03
+soma	21698-11	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21698-11	Q9UKX5	Q9UKX5	ITGA11	ITGA11	multi-target: paired by position, UniProt confirms	2026_03
+soma	21720-13	Q495W5	Q495W5	FUT11	POFUT4	rename	2026_03
+soma	21734-36	Q96EU7	Q96EU7	C1GALT1C1	C1GALT1C1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21734-36	Q9NS00	Q9NS00	C1GALT1	C1GALT1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21747-114	P61088	P61088	UBE2N	UBE2N	multi-target: paired by position, UniProt confirms	2026_03
+soma	21747-114	Q13404	Q13404	UBE2V1	UBE2V1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21747-8	Q13404	Q13404	UBE2V1	UBE2V1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21747-8	P61088	P61088	UBE2N	UBE2N	multi-target: paired by position, UniProt confirms	2026_03
+soma	21748-36	P62068	P62068	USP46	USP46	multi-target: paired by position, UniProt confirms	2026_03
+soma	21748-36	Q8TAF3	Q8TAF3	WDR48	WDR48	multi-target: paired by position, UniProt confirms	2026_03
+soma	21751-6	Q8TAF3	Q8TAF3	WDR48	WDR48	multi-target: paired by position, UniProt confirms	2026_03
+soma	21751-6	O75317	O75317	USP12	USP12	multi-target: paired by position, UniProt confirms	2026_03
+soma	21756-5	Q15819	Q15819	UBE2V2	UBE2V2	multi-target: paired by position, UniProt confirms	2026_03
+soma	21756-5	P61088	P61088	UBE2N	UBE2N	multi-target: paired by position, UniProt confirms	2026_03
+soma	21759-23	O94782	O94782	USP1	USP1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21759-23	Q8TAF3	Q8TAF3	WDR48	WDR48	multi-target: paired by position, UniProt confirms	2026_03
+soma	2182-54	P0C0L5	P0C0L5	C4B	C4B|C4B_2	multi-target: paired by position, UniProt confirms; paralog accession: every HGNC-linked gene	2026_03
+soma	2182-54	P0C0L4	P0C0L4	C4A	C4A	multi-target: paired by position, UniProt confirms	2026_03
+soma	21897-4	Q96PD4	Q96PD4	IL17F	IL17F	multi-target: paired by position, UniProt confirms	2026_03
+soma	21897-4	Q16552	Q16552	IL17A	IL17A	multi-target: paired by position, UniProt confirms	2026_03
+soma	21899-36	P08476	P08476	INHBA	INHBA	multi-target: paired by position, UniProt confirms	2026_03
+soma	21899-36	P05111	P05111	INHA	INHA	multi-target: paired by position, UniProt confirms	2026_03
+soma	21901-14	P26006	P26006	ITGA3	ITGA3	multi-target: paired by position, UniProt confirms	2026_03
+soma	21901-14	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21903-6	P05107	P05107	ITGB2	ITGB2	multi-target: paired by position, UniProt confirms	2026_03
+soma	21903-6	P20701	P20701	ITGAL	ITGAL	multi-target: paired by position, UniProt confirms	2026_03
+soma	21905-10	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21905-10	P17301	P17301	ITGA2	ITGA2	multi-target: paired by position, UniProt confirms	2026_03
+soma	21909-10	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21909-10	P08648	P08648	ITGA5	ITGA5	multi-target: paired by position, UniProt confirms	2026_03
+soma	21909-2	P08648	P08648	ITGA5	ITGA5	multi-target: paired by position, UniProt confirms	2026_03
+soma	21909-2	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21923-24	Q9UBT2	Q9UBT2	UBA2	UBA2	multi-target: paired by position, UniProt confirms	2026_03
+soma	21923-24	Q9UBE0	Q9UBE0	SAE1	SAE1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21926-24	P0CG47	P0CG47	UBB	UBB	multi-target: paired by position, UniProt confirms	2026_03
+soma	21926-24	P51668	P51668	UBE2D1	UBE2D1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21929-53	P61077	P61077	UBE2D3	UBE2D3	multi-target: paired by position, UniProt confirms	2026_03
+soma	21929-53	P0CG47	P0CG47	UBB	UBB	multi-target: paired by position, UniProt confirms	2026_03
+soma	21931-16	P68036	P68036	UBE2L3	UBE2L3	multi-target: paired by position, UniProt confirms	2026_03
+soma	21931-16	P0CG47	P0CG47	UBB	UBB	multi-target: paired by position, UniProt confirms	2026_03
+soma	21931-27	P68036	P68036	UBE2L3	UBE2L3	multi-target: paired by position, UniProt confirms	2026_03
+soma	21931-27	P0CG47	P0CG47	UBB	UBB	multi-target: paired by position, UniProt confirms	2026_03
+soma	21939-6	Q8TBC4	Q8TBC4	UBA3	UBA3	multi-target: paired by position, UniProt confirms	2026_03
+soma	21939-6	Q13564	Q13564	NAE1	NAE1	multi-target: paired by position, UniProt confirms	2026_03
+soma	21946-79	P08887	P08887	IL6R	IL6R	multi-target: paired by position, UniProt confirms	2026_03
+soma	21946-79	P05231	P05231	IL6	IL6	multi-target: paired by position, UniProt confirms	2026_03
+soma	22094-15	Q8N5S3	Q8N5S3	C2orf73	CIMIP6	rename	2026_03
+soma	22114-4	Q8IYD9	Q8IYD9	LAS2	C18orf54	rename	2026_03
+soma	22118-7	Q9Y5P2	Q9Y5P2	CSAG2	CSAG2|CSAG3	paralog accession: every HGNC-linked gene	2026_03
+soma	22137-3	Q5T8I3	Q5T8I3	FAM102B	EEIG2	rename	2026_03
+soma	22398-5	O43423	O43423	ANP32C	ANP32CP	rename	2026_03
+soma	22467-94	Q9XRX5	Q9XRX5	HHLA3	ANKRD13C-DT	rename	2026_03
+soma	22481-15	Q96DY2	Q96DY2	IQCD	DRC10	rename	2026_03
+soma	22813-5	Q56UQ5	Q56UQ5	FLJ44635	FLJ44635	review: UniProt has no gene name, vendor gene kept	2026_03
+soma	22968-9	Q9UEU5	Q9UEU5	GAGE2D	GAGE2D|GAGE8	paralog accession: every HGNC-linked gene	2026_03
+soma	23212-8	Q9NYK6	Q9NYK6	EURL	C21orf91	rename	2026_03
+soma	23290-3	Q16637	Q16637	SMN1	SMN1|SMN2	paralog accession: every HGNC-linked gene	2026_03
+soma	23307-7	Q96AJ1	Q96AJ1	CLUAP1	IFT38	rename	2026_03
+soma	23314-46	Q8IW40	Q8IW40	CCDC103	DNAAF19	rename	2026_03
+soma	23350-66	Q9BPY3	Q9BPY3	FAM118B	SIRAL1	rename	2026_03
+soma	23358-42	Q9NWS6	Q9NWS6	FAM118A	SIRAL2	rename	2026_03
+soma	23379-60	Q14CZ0	Q14CZ0	C16orf72	HAPSTR1	rename	2026_03
+soma	23386-38	B9ZVM9	B9ZVM9	TCP10L2	TCP10L2	review: accession not in this UniProt release, vendor gene kept	2026_03
+soma	23544-10	Q12799	Q12799	TCP10L3	TCP10L3	review: accession not in this UniProt release, vendor gene kept	2026_03
+soma	2429-27	P07360	P07360	C8G	C8G	multi-target: paired by position, UniProt confirms	2026_03
+soma	2429-27	P07358	P07358	C8B	C8B	multi-target: paired by position, UniProt confirms	2026_03
+soma	2429-27	P07357	P07357	C8A	C8A	multi-target: paired by position, UniProt confirms	2026_03
+soma	24316-10	Q1RMZ1	Q1RMZ1	BMT2	SAMTOR	rename	2026_03
+soma	24450-96	Q5BKX5	Q5BKX5	C19orf54	ACTMAP	rename	2026_03
+soma	24465-28	O60224	O60224	SSX4	SSX4|SSX4B	paralog accession: every HGNC-linked gene	2026_03
+soma	24658-98	Q96NT0	Q96NT0	CCDC115	VMA22	rename	2026_03
+soma	24694-158	O14745	O14745	SLC9A3R1	NHERF1	rename	2026_03
+soma	24950-21	Q9BW04	Q9BW04	SARG	C1orf116	rename	2026_03
+soma	25217-35	Q9NS26	Q9NS26	SPANXA1	SPANXA1|SPANXA2	paralog accession: every HGNC-linked gene	2026_03
+soma	25253-17	Q5JWF2	Q5JWF2	GNAS	GNAS	multi-target: matched through UniProt	2026_03
+soma	25253-17	P63092	P63092	GNAS	GNAS	multi-target: matched through UniProt	2026_03
+soma	25258-41	Q8NB90	Q8NB90	SPATA5	AFG2A	rename	2026_03
+soma	25413-80	Q13066	Q13066	GAGE2B	GAGE2B|GAGE2C	paralog accession: every HGNC-linked gene	2026_03
+soma	25857-34	Q4V339	Q4V339	CBWD6	ZNG1F	rename	2026_03
+soma	2607-54	O75462	O75462	CRLF1	CRLF1	multi-target: paired by position, UniProt confirms	2026_03
+soma	2607-54	Q9UBD9	Q9UBD9	CLCF1	CLCF1	multi-target: paired by position, UniProt confirms	2026_03
+soma	26119-5	P04062	P04062	GBA	GBA1	rename	2026_03
+soma	26123-18	Q6ZNG9	Q6ZNG9	KRBA2	KRABD2	rename	2026_03
+soma	26154-38	Q5XKR9	Q5XKR9	FAM104B	VCF2	rename	2026_03
+soma	26183-133	O95995	O95995	GAS8	DRC4	rename	2026_03
+soma	26327-6	Q14213	Q14213	EBI3	EBI3	multi-target: paired by position, UniProt confirms	2026_03
+soma	26327-6	Q9NPF7	Q9NPF7	IL23A	IL23A	multi-target: paired by position, UniProt confirms	2026_03
+soma	26673-101	Q9UII6	Q9UII6	DUSP13	DUSP13B	rename	2026_03
+soma	2668-70	P04632	P04632	CAPNS1	CAPNS1	multi-target: paired by position, UniProt confirms	2026_03
+soma	2668-70	P07384	P07384	CAPN1	CAPN1	multi-target: paired by position, UniProt confirms	2026_03
+soma	27203-49	P02746	P02746	C1QB	C1QB	multi-target: paired by position, UniProt confirms	2026_03
+soma	27203-49	P00736	P00736	C1R	C1R	multi-target: paired by position, UniProt confirms	2026_03
+soma	27203-49	P02745	P02745	C1QA	C1QA	multi-target: paired by position, UniProt confirms	2026_03
+soma	27203-49	P02747	P02747	C1QC	C1QC	multi-target: paired by position, UniProt confirms	2026_03
+soma	27203-49	P09871	P09871	C1S	C1S	multi-target: paired by position, UniProt confirms	2026_03
+soma	27205-53	P01857	P01857	IGHG3|IGK|IGL|IGHG1|IGHG4|IGHG2	IGHG3|IGK|IGL|IGHG1|IGHG4|IGHG2	review: vendor and UniProt name different genes, vendor gene kept	2026_03
+soma	27310-2	P01127	P01127	PDGFB	PDGFB	multi-target: paired by position, UniProt confirms	2026_03
+soma	27310-2	P04085	P04085	PDGFA	PDGFA	multi-target: paired by position, UniProt confirms	2026_03
+soma	27314-75	P45379	P45379	TNNT2	TNNT2	multi-target: paired by position, UniProt confirms	2026_03
+soma	27314-75	P63316	P63316	TNNC1	TNNC1	multi-target: paired by position, UniProt confirms	2026_03
+soma	27314-75	P19429	P19429	TNNI3	TNNI3	multi-target: paired by position, UniProt confirms	2026_03
+soma	2744-57	P01857	P01857	IGHG3|IGK|IGL|IGHG1|IGHG4|IGHG2	IGHG3|IGK|IGL|IGHG1|IGHG4|IGHG2	review: vendor and UniProt name different genes, vendor gene kept	2026_03
+soma	2753-2	P02747	P02747	C1QC	C1QC	multi-target: paired by position, UniProt confirms	2026_03
+soma	2753-2	P02746	P02746	C1QB	C1QB	multi-target: paired by position, UniProt confirms	2026_03
+soma	2753-2	P02745	P02745	C1QA	C1QA	multi-target: paired by position, UniProt confirms	2026_03
+soma	2765-4	O14793	O14793	MSTN	MSTN	multi-target: paired by position, UniProt confirms	2026_03
+soma	2765-4	O95390	O95390	GDF11	GDF11	multi-target: paired by position, UniProt confirms	2026_03
+soma	2781-63	Q8NHW4	Q8NHW4	CCL4L1	CCL4L1|CCL4L2	paralog accession: every HGNC-linked gene	2026_03
+soma	2783-18	P16619	P16619	CCL3L1	CCL3L1|CCL3L3	paralog accession: every HGNC-linked gene	2026_03
+soma	27957-66	Q9GZY0	Q9GZY0	NXF2	NXF2|NXF2B	paralog accession: every HGNC-linked gene	2026_03
+soma	2796-62	P02679	P02679	FGG	FGG	multi-target: paired by position, UniProt confirms	2026_03
+soma	2796-62	P02675	P02675	FGB	FGB	multi-target: paired by position, UniProt confirms	2026_03
+soma	2796-62	P02671	P02671	FGA	FGA	multi-target: paired by position, UniProt confirms	2026_03
+soma	28164-82	Q3SX64	Q3SX64	ODF3L2	CIMAP1D	rename	2026_03
+soma	28277-246	Q8N999	Q8N999	C12orf29	RLIG1	rename	2026_03
+soma	2829-19	Q14213	Q14213	EBI3	EBI3	multi-target: paired by position, UniProt confirms	2026_03
+soma	2829-19	Q8NEV9	Q8NEV9	IL27	IL27	multi-target: paired by position, UniProt confirms	2026_03
+soma	28397-10	Q8TDR0	Q8TDR0	TRAF3IP1	IFT54	rename	2026_03
+soma	28431-42	Q9H8H3	Q9H8H3	METTL7A	TMT1A	rename	2026_03
+soma	28476-10	O00193	O00193	SMAP	C11orf58	rename	2026_03
+soma	28628-142	Q16385	Q16385	SSX2	SSX2|SSX2B	paralog accession: every HGNC-linked gene	2026_03
+soma	28665-28	P23610	P23610	F8A1	F8A1|F8A2|F8A3	paralog accession: every HGNC-linked gene	2026_03
+soma	28697-58	Q5T9C2	Q5T9C2	FAM102A	EEIG1	rename	2026_03
+soma	28780-5	Q8NDB6	Q8NDB6	FAM156A	FAM156A|FAM156B	paralog accession: every HGNC-linked gene	2026_03
+soma	29285-59	Q53H54	Q53H54	TRMT12	TYW2	rename	2026_03
+soma	29292-6	Q8NA57	Q8NA57	C12orf50	ZC3H11D	rename	2026_03
+soma	29296-14	Q8IXS2	Q8IXS2	CCDC65	DRC2	rename	2026_03
+soma	29460-14	P59665	P59665	DEFA1	DEFA1|DEFA1B	paralog accession: every HGNC-linked gene	2026_03
+soma	29478-197	Q8NHW4	Q8NHW4	CCL4L1	CCL4L1|CCL4L2	paralog accession: every HGNC-linked gene	2026_03
+soma	29486-66	P0DN87	P0DN87	CGB7	CGB7	multi-target: paired by position, UniProt confirms	2026_03
+soma	29486-66	P01215	P01215	CGA	CGA	multi-target: paired by position, UniProt confirms	2026_03
+soma	29486-66	P0DN86	P0DN86	CGB3	CGB3|CGB5|CGB8	multi-target: paired by position, UniProt confirms; paralog accession: every HGNC-linked gene	2026_03
+soma	29489-59	P0DN86	P0DN86	CGB3	CGB3|CGB5|CGB8	paralog accession: every HGNC-linked gene	2026_03
+soma	29495-32	P0DML3	P0DML3	CSH2	CSH2	multi-target: paired by position, UniProt confirms	2026_03
+soma	29495-32	P0DML2	P0DML2	CSH1	CSH1	multi-target: paired by position, UniProt confirms	2026_03
+soma	29527-149	Q8NHW4	Q8NHW4	CCL4L1	CCL4L1|CCL4L2	paralog accession: every HGNC-linked gene	2026_03
+soma	2953-31	P01229	P01229	LHB	LHB	multi-target: paired by position, UniProt confirms	2026_03
+soma	2953-31	P01215	P01215	CGA	CGA	multi-target: paired by position, UniProt confirms	2026_03
+soma	29606-71	P0DP73	P0DP73	DEFB130B	DEFB130B	multi-target: paired by position, UniProt confirms	2026_03
+soma	29606-71	P0DP74	P0DP74	DEFB130A	DEFB130A	multi-target: paired by position, UniProt confirms	2026_03
+soma	29947-27	Q9BRJ6	Q9BRJ6	C7orf50	CHLSN	rename	2026_03
+soma	30268-114	Q6P1K8	Q6P1K8	GTF2H2C	GTF2H2C|GTF2H2C_2	paralog accession: every HGNC-linked gene	2026_03
+soma	3032-11	P01225	P01225	FSHB	FSHB	multi-target: paired by position, UniProt confirms	2026_03
+soma	3032-11	P01215	P01215	CGA	CGA	multi-target: paired by position, UniProt confirms	2026_03
+soma	30339-65	Q71U36	Q71U36	TUBA1A	TUBA1A	multi-target: paired by position, UniProt confirms	2026_03
+soma	30339-65	Q9NY65	Q9NY65	TUBA8	TUBA8	multi-target: paired by position, UniProt confirms	2026_03
+soma	30339-65	Q9BQE3	Q9BQE3	TUBA1C	TUBA1C	multi-target: paired by position, UniProt confirms	2026_03
+soma	30339-65	P68366	P68366	TUBA4A	TUBA4A	multi-target: paired by position, UniProt confirms	2026_03
+soma	30339-65	P68363	P68363	TUBA1B	TUBA1B	multi-target: paired by position, UniProt confirms	2026_03
+soma	30373-68	Q6J272	Q6J272	FAM166A	CIMIP2A	rename	2026_03
+soma	30429-104	Q9NV96	Q9NV96	TMEM30A	CDC50A	rename	2026_03
+soma	30540-106	Q7Z309	Q7Z309	FAM122B	PABIR2	rename	2026_03
+soma	30557-2	A4QMS7	A4QMS7	C5orf49	CFAP90	rename	2026_03
+soma	30561-72	A5PLL7	A5PLL7	PEDS1	PEDS1	multi-target: paired by position, UniProt confirms	2026_03
+soma	30561-72	Q13404	Q13404	UBE2V1	UBE2V1	multi-target: paired by position, UniProt confirms	2026_03
+soma	30605-22	A8MYA2	A8MYA2	CXorf49	CXorf49|CXorf49B	paralog accession: every HGNC-linked gene	2026_03
+soma	30674-5	Q5BLP8	Q5BLP8	C4orf48	NICOL1	rename	2026_03
+soma	3069-52	P01871	P01871	IGHM|JCHAIN|IGL|IGK	IGHM|JCHAIN|IGL|IGK	review: vendor and UniProt name different genes, vendor gene kept	2026_03
+soma	31000-1	Q96C01	Q96C01	FAM136A	TIMCC	rename	2026_03
+soma	31148-47	Q9UKX5	Q9UKX5	ITGA11	ITGA11	multi-target: paired by position, UniProt confirms	2026_03
+soma	31148-47	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	31149-2	P38570	P38570	ITGAE	ITGAE	multi-target: paired by position, UniProt confirms	2026_03
+soma	31149-2	P26010	P26010	ITGB7	ITGB7	multi-target: paired by position, UniProt confirms	2026_03
+soma	31150-22	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	31150-22	O75578	O75578	ITGA10	ITGA10	multi-target: paired by position, UniProt confirms	2026_03
+soma	31151-53	P23229	P23229	ITGA6	ITGA6	multi-target: paired by position, UniProt confirms	2026_03
+soma	31151-53	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	31160-11	Q16394	Q16394	EXT1	EXT1	multi-target: paired by position, UniProt confirms	2026_03
+soma	31160-11	Q93063	Q93063	EXT2	EXT2	multi-target: paired by position, UniProt confirms	2026_03
+soma	31183-95	Q8NEV9	Q8NEV9	IL27	IL27	multi-target: paired by position, UniProt confirms	2026_03
+soma	31183-95	Q14213	Q14213	EBI3	EBI3	multi-target: paired by position, UniProt confirms	2026_03
+soma	31302-221	Q9GZS3	Q9GZS3	WDR61	SKIC8	rename	2026_03
+soma	31330-63	Q96BI1	Q96BI1	SLC22A18	SLC67A1	rename	2026_03
+soma	31385-145	Q8IXS8	Q8IXS8	FAM126B	HYCC2	rename	2026_03
+soma	31512-52	Q9C0C2	Q9C0C2	TNKS1BP1	CNOT12	rename	2026_03
+soma	31528-56	P26992	P26992	CNTFR	CNTFR	multi-target: paired by position, UniProt confirms	2026_03
+soma	31528-56	P26441	P26441	CNTF	CNTF	multi-target: paired by position, UniProt confirms	2026_03
+soma	31546-1	P01222	P01222	TSHB	TSHB	multi-target: paired by position, UniProt confirms	2026_03
+soma	31546-1	P01215	P01215	CGA	CGA	multi-target: paired by position, UniProt confirms	2026_03
+soma	31553-5	Q96PD4	Q96PD4	IL17F	IL17F	multi-target: paired by position, UniProt confirms	2026_03
+soma	31553-5	Q16552	Q16552	IL17A	IL17A	multi-target: paired by position, UniProt confirms	2026_03
+soma	31726-23	Q96E66	Q96E66	LRRC51|LRTOMT	LRRC51	rename	2026_03
+soma	32363-3	A1L0T0	A1L0T0	ILVBL	HACL2	rename	2026_03
+soma	32656-16	Q8WW14	Q8WW14	C10orf82	SPMIP5	rename	2026_03
+soma	32657-81	Q5JU00	Q5JU00	TCTE1	DRC5	rename	2026_03
+soma	33127-11	Q96LM6	Q96LM6	TEX37	SPMIP9	rename	2026_03
+soma	33443-20	Q3SXR2	Q3SXR2	C3orf36	C3orf36	review: accession not in this UniProt release, vendor gene kept	2026_03
+soma	33453-10	Q9NRX3	Q9NRX3	NDUFA4L2	COXFA4L2	rename	2026_03
+soma	33560-317	P0CG08	P0CG08	GPR89B	GPHRB	rename	2026_03
+soma	3357-67	P20248	P20248	CCNA2	CCNA2	multi-target: paired by position, UniProt confirms	2026_03
+soma	3357-67	P24941	P24941	CDK2	CDK2	multi-target: paired by position, UniProt confirms	2026_03
+soma	3358-51	Q15078	Q15078	CDK5R1	CDK5R1	multi-target: paired by position, UniProt confirms	2026_03
+soma	3358-51	Q00535	Q00535	CDK5	CDK5	multi-target: paired by position, UniProt confirms	2026_03
+soma	3359-11	P49336	P49336	CDK8	CDK8	multi-target: paired by position, UniProt confirms	2026_03
+soma	3359-11	P24863	P24863	CCNC	CCNC	multi-target: paired by position, UniProt confirms	2026_03
+soma	33596-2	O00327	O00327	ARNTL	BMAL1	rename	2026_03
+soma	33613-6	Q86WT1	Q86WT1	TTC30A	IFT70A	rename	2026_03
+soma	33630-160	Q9NX04	Q9NX04	C1orf109	AIRIM	rename	2026_03
+soma	33696-14	Q8IWL2	Q8IWL2	SFTPA1	SFTPA1	multi-target: paired by position, UniProt confirms	2026_03
+soma	33696-14	Q8IWL1	Q8IWL1	SFTPA2	SFTPA2	multi-target: paired by position, UniProt confirms	2026_03
+soma	33764-46	Q8WVI0	Q8WVI0	SMIM4	UQCC5	rename	2026_03
+soma	33870-179	Q9HC77	Q9HC77	CENPJ	CPAP	rename	2026_03
+soma	3390-72	P27986	P27986	PIK3R1	PIK3R1	multi-target: paired by position, UniProt confirms	2026_03
+soma	3390-72	P42336	P42336	PIK3CA	PIK3CA	multi-target: paired by position, UniProt confirms	2026_03
+soma	33910-15	P62805	P62805	H4C1	H4C1|H4C11|H4C12|H4C13|H4C14|H4C15|H4C16|H4C2|H4C3|H4C4|H4C5|H4C6|H4C8|H4C9	paralog accession: every HGNC-linked gene	2026_03
+soma	34109-247	Q92637	Q92637	FCGR1B|FCGR1BP	FCGR1BP	rename	2026_03
+soma	34130-140	Q5TF21	Q5TF21	SOGA3	MTCL3	rename	2026_03
+soma	3422-4	P14635	P14635	CCNB1	CCNB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	3422-4	P06493	P06493	CDK1	CDK1	multi-target: paired by position, UniProt confirms	2026_03
+soma	34463-30	Q9Y2D5	Q9Y2D5	AKAP2	AKAP2	review: HGNC complex locus constituent symbol kept, UniProt merged the entry into PALM2AKAP2	2026_03
+soma	34513-47	Q15599	Q15599	SLC9A3R2	NHERF2	rename	2026_03
+soma	34596-5	Q8NC54	Q8NC54	KCT2	C5orf15	rename	2026_03
+soma	34602-14	Q9H7B7	Q9H7B7	PKD1L1-AS1|C7orf69	PKD1L1-AS1	rename	2026_03
+soma	34619-4	A8MVS5	A8MVS5	HIDE1	C19orf38	rename	2026_03
+soma	34776-8	P43362	P43362	MAGEA9	MAGEA9|MAGEA9B	paralog accession: every HGNC-linked gene	2026_03
+soma	34850-41	O14598	O14598	VCY	VCY|VCY1B	paralog accession: every HGNC-linked gene	2026_03
+soma	34879-1	P0C2Y1	P0C2Y1	NBPF7	NBPF7P	rename	2026_03
+soma	34890-2	Q6P435	Q6P435			review: UniProt has no gene name, vendor gene kept	2026_03
+soma	34899-51	Q969W3	Q969W3	FAM104A	VCF1	rename	2026_03
+soma	34908-20	A8MT66	A8MT66		YU005	vendor code from the Olink list, same accession	2026_03
+soma	34919-42	B2RBV5	B2RBV5		MRFAP1L2	blank filled	2026_03
+soma	34926-6	Q6ZRX8	Q6ZRX8			review: UniProt has no gene name, vendor gene kept	2026_03
+soma	34935-22	Q9BRP9	Q9BRP9			review: UniProt has no gene name, vendor gene kept	2026_03
+soma	34959-8	A6NEY3	A6NEY3	GOLGA6L3|GOLGA6L3P	GOLGA6L3P	review: accession not in this UniProt release, vendor gene kept; previous HGNC symbol, the approved symbol	2026_03
+soma	35001-10	Q5PR19	Q5PR19			review: UniProt has no gene name, vendor gene kept	2026_03
+soma	35005-16	Q6ZSR3	Q6ZSR3		YO027	vendor code from the Olink list, same accession	2026_03
+soma	35010-3	Q1RN00	Q1RN00		NECTIN3-AS1	blank filled	2026_03
+soma	3503-4	P05556	P05556	ITGB1	ITGB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	3503-4	P56199	P56199	ITGA1	ITGA1	multi-target: paired by position, UniProt confirms	2026_03
+soma	35042-13	Q8N402	Q8N402			review: accession not in this UniProt release, vendor gene kept	2026_03
+soma	3505-6	P01374	P01374	LTA	LTA	multi-target: paired by position, UniProt confirms	2026_03
+soma	3505-6	Q06643	Q06643	LTB	LTB	multi-target: paired by position, UniProt confirms	2026_03
+soma	3506-49	P01374	P01374	LTA	LTA	multi-target: paired by position, UniProt confirms	2026_03
+soma	3506-49	Q06643	Q06643	LTB	LTB	multi-target: paired by position, UniProt confirms	2026_03
+soma	3514-49	P01009	P01009	SERPINA1	SERPINA1	multi-target: paired by position, UniProt confirms	2026_03
+soma	3514-49	P24158	P24158	PRTN3	PRTN3	multi-target: paired by position, UniProt confirms	2026_03
+soma	3521-16	P01222	P01222	TSHB	TSHB	multi-target: paired by position, UniProt confirms	2026_03
+soma	3521-16	P01215	P01215	CGA	CGA	multi-target: paired by position, UniProt confirms	2026_03
+soma	35230-39	Q16635	Q16635	TAZ	TAFAZZIN	rename	2026_03
+soma	35496-103	P63092	P63092	GNAS	GNAS	multi-target: matched through UniProt	2026_03
+soma	35496-103	Q5JWF2	Q5JWF2	GNAS	GNAS	multi-target: matched through UniProt	2026_03
+soma	3647-49	Q9Y6Y9	Q9Y6Y9	LY96	LY96	multi-target: paired by position, UniProt confirms	2026_03
+soma	3647-49	O00206	O00206	TLR4	TLR4	multi-target: paired by position, UniProt confirms	2026_03
+soma	3714-49	P06732	P06732	CKM	CKM	multi-target: paired by position, UniProt confirms	2026_03
+soma	3714-49	P12277	P12277	CKB	CKB	multi-target: paired by position, UniProt confirms	2026_03
+soma	3739-72	P08514	P08514	ITGA2B	ITGA2B	multi-target: paired by position, UniProt confirms	2026_03
+soma	3739-72	P05106	P05106	ITGB3	ITGB3	multi-target: paired by position, UniProt confirms	2026_03
+soma	4135-84	P01854	P01854	IGHE|IGL|IGK	IGHE|IGL|IGK	review: vendor and UniProt name different genes, vendor gene kept	2026_03
+soma	4153-11	P07288	P07288	KLK3	KLK3	multi-target: paired by position, UniProt confirms	2026_03
+soma	4153-11	P01011	P01011	SERPINA3	SERPINA3	multi-target: paired by position, UniProt confirms	2026_03
+soma	4383-97	P09529	P09529	INHBB	INHBB	multi-target: paired by position, UniProt confirms	2026_03
+soma	4383-97	P08476	P08476	INHBA	INHBA	multi-target: paired by position, UniProt confirms	2026_03
+soma	4481-34	P0C0L5	P0C0L5	C4B	C4B|C4B_2	multi-target: paired by position, UniProt confirms; paralog accession: every HGNC-linked gene	2026_03
+soma	4481-34	P0C0L4	P0C0L4	C4A	C4A	multi-target: paired by position, UniProt confirms	2026_03
+soma	4482-66	P13671	P13671	C6	C6	multi-target: paired by position, UniProt confirms	2026_03
+soma	4482-66	P01031	P01031	C5	C5	multi-target: paired by position, UniProt confirms	2026_03
+soma	4903-72	P63098	P63098	PPP3R1	PPP3R1	multi-target: paired by position, UniProt confirms	2026_03
+soma	4903-72	Q08209	Q08209	PPP3CA	PPP3CA	multi-target: paired by position, UniProt confirms	2026_03
+soma	4907-56	P02679	P02679	FGG	FGG	multi-target: paired by position, UniProt confirms	2026_03
+soma	4907-56	P02675	P02675	FGB	FGB	multi-target: paired by position, UniProt confirms	2026_03
+soma	4907-56	P02671	P02671	FGA	FGA	multi-target: paired by position, UniProt confirms	2026_03
+soma	4914-10	P0DN87	P0DN87	CGB7	CGB7	multi-target: paired by position, UniProt confirms	2026_03
+soma	4914-10	P0DN86	P0DN86	CGB3	CGB3|CGB5|CGB8	multi-target: paired by position, UniProt confirms; paralog accession: every HGNC-linked gene	2026_03
+soma	4914-10	P01215	P01215	CGA	CGA	multi-target: paired by position, UniProt confirms	2026_03
+soma	4915-64	P68871	P68871	HBB	HBB	multi-target: paired by position, UniProt confirms	2026_03
+soma	4915-64	P69905	P69905	HBA1	HBA1|HBA2	multi-target: paired by position, UniProt confirms; paralog accession: every HGNC-linked gene	2026_03
+soma	4916-2	P01880	P01880	IGHD|IGL|IGK	IGHD|IGL|IGK	review: vendor and UniProt name different genes, vendor gene kept	2026_03
+soma	4917-62	P18084	P18084	ITGB5	ITGB5	multi-target: paired by position, UniProt confirms	2026_03
+soma	4917-62	P06756	P06756	ITGAV	ITGAV	multi-target: paired by position, UniProt confirms	2026_03
+soma	5183-53	P54619	P54619	PRKAG1	PRKAG1	multi-target: paired by position, UniProt confirms	2026_03
+soma	5183-53	Q9Y478	Q9Y478	PRKAB1	PRKAB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	5183-53	Q13131	Q13131	PRKAA1	PRKAA1	multi-target: paired by position, UniProt confirms	2026_03
+soma	5225-50	P67870	P67870	CSNK2B	CSNK2B	multi-target: paired by position, UniProt confirms	2026_03
+soma	5225-50	P68400	P68400	CSNK2A1	CSNK2A1	multi-target: paired by position, UniProt confirms	2026_03
+soma	5226-36	P67870	P67870	CSNK2B	CSNK2B	multi-target: paired by position, UniProt confirms	2026_03
+soma	5226-36	P19784	P19784	CSNK2A2	CSNK2A2	multi-target: paired by position, UniProt confirms	2026_03
+soma	5245-40	P54619	P54619	PRKAG1	PRKAG1	multi-target: paired by position, UniProt confirms	2026_03
+soma	5245-40	O43741	O43741	PRKAB2	PRKAB2	multi-target: paired by position, UniProt confirms	2026_03
+soma	5245-40	P54646	P54646	PRKAA2	PRKAA2	multi-target: paired by position, UniProt confirms	2026_03
+soma	5259-2	Q15750	Q15750	TAB1	TAB1	multi-target: paired by position, UniProt confirms	2026_03
+soma	5259-2	O43318	O43318	MAP3K7	MAP3K7	multi-target: paired by position, UniProt confirms	2026_03
+soma	5615-62	Q8WUF8	Q8WUF8	FAM172A	ARB2A	rename	2026_03
+soma	5664-57	Q8N104	Q8N104	DEFB106A	DEFB106A|DEFB106B	paralog accession: every HGNC-linked gene	2026_03
+soma	5679-16	P81534	P81534	DEFB103A	DEFB103A|DEFB103B	paralog accession: every HGNC-linked gene	2026_03
+soma	5699-19	Q15884	Q15884	FAM189A2	ENTREP1	rename	2026_03
+soma	5719-66	Q15884	Q15884	FAM189A2	ENTREP1	rename	2026_03
+soma	5744-12	Q9BUN1	Q9BUN1	MENT	C1orf56	rename	2026_03
+soma	5763-67	Q8WTQ1	Q8WTQ1	DEFB104A	DEFB104A|DEFB104B	paralog accession: every HGNC-linked gene	2026_03
+soma	5810-25	P13385	P13385	TDGF1	CRIPTO	rename	2026_03
+soma	5934-1	P02792	P02792	FTL	FTL	multi-target: paired by position, UniProt confirms	2026_03
+soma	5934-1	P02794	P02794	FTH1	FTH1	multi-target: paired by position, UniProt confirms	2026_03
+soma	6229-13	P0DML3	P0DML3	CSH2	CSH2	multi-target: paired by position, UniProt confirms	2026_03
+soma	6229-13	P0DML2	P0DML2	CSH1	CSH1	multi-target: paired by position, UniProt confirms	2026_03
+soma	6334-9	P36268	P36268	GGT2|GGT2P	GGT2P	rename	2026_03
+soma	6378-2	Q86SI9	Q86SI9	C5orf38	IRX2-DT	rename	2026_03
+soma	6399-52	Q8IZN7	Q8IZN7	DEFB107A	DEFB107A|DEFB107B	paralog accession: every HGNC-linked gene	2026_03
+soma	6406-3	Q9C002	Q9C002	NMES1	COXFA4L3	rename	2026_03
+soma	6494-60	Q96QH8	Q96QH8	SPACA5	SPACA5|SPACA5B	paralog accession: every HGNC-linked gene	2026_03
+soma	6525-17	Q6B8I1	Q6B8I1	DUSP13	DUSP13A	rename	2026_03
+soma	6937-251	Q9BWL3	Q9BWL3	C1orf43	LTAP1	rename	2026_03
+soma	7097-8	Q9Y6F8	Q9Y6F8	CDY1	CDY1|CDY1B	paralog accession: every HGNC-linked gene	2026_03
+soma	7154-92	Q6P5S2	Q6P5S2	LEG1	C6orf58	rename	2026_03
+soma	7156-2	Q6P4F1	Q6P4F1	FUT10	POFUT3	rename	2026_03
+soma	7842-52	O75920	O75920	SERF1A	SERF1A|SERF1B	paralog accession: every HGNC-linked gene	2026_03
+soma	7898-29	Q8TC05	Q8TC05	MDM1	SAXO6	rename	2026_03
+soma	7939-1	A1A4F0	A1A4F0	SLC66A1L	SLC66A1LP	rename	2026_03
+soma	8383-20	C9JXX5	C9JXX5	C11orf94	FREY1	rename	2026_03
+soma	8404-102	Q9H3K6	Q9H3K6	BOLA2	BOLA2|BOLA2B	paralog accession: every HGNC-linked gene	2026_03
+soma	8467-9	P08476	P08476	INHBA	INHBA	multi-target: paired by position, UniProt confirms	2026_03
+soma	8467-9	P09529	P09529	INHBB	INHBB	multi-target: paired by position, UniProt confirms	2026_03
+soma	8488-33	P08514	P08514	ITGA2B	ITGA2B	multi-target: paired by position, UniProt confirms	2026_03
+soma	8488-33	P05106	P05106	ITGB3	ITGB3	multi-target: paired by position, UniProt confirms	2026_03
+soma	9196-8	P47929	P47929	LGALS7	LGALS7|LGALS7B	paralog accession: every HGNC-linked gene	2026_03
+soma	9250-87	P59665	P59665	DEFA1	DEFA1|DEFA1B	paralog accession: every HGNC-linked gene	2026_03
+soma	9400-40	P47929	P47929	LGALS7	LGALS7|LGALS7B	paralog accession: every HGNC-linked gene	2026_03
+soma	9544-24	Q9H7B7	Q9H7B7	PKD1L1-AS1|C7orf69	PKD1L1-AS1	rename	2026_03
